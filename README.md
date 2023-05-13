@@ -5,7 +5,7 @@ A React app showing off some anime.
 One may be new to anime or is bored and in the mood to browse the medium. This site is a simple way just to do just that.
 
 ### How?
-Using Jikan-TS, a TypeScript wrapper for Jikan, an unofficial API of MyAnimeList, for show data and information, and React as a frontend, the site aims to be quick and easy to use.
+Using Jikan-TS, a TypeScript wrapper for Jikan, an unofficial API of MyAnimeList, for retrieving show data and information, and React as a frontend, the site aims to be quick and easy to use.
 
 ### Where is it?
 Hold on there, pardner! Construction's in progress!
