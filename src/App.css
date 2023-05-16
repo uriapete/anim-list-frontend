@@ -1,13 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
 }
 
-.App-header {
-  min-height: 100vh;
+main{
+  background-color: white;
+  width: 70vw;
+  max-width: 1000px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-flow: column nowrap;
+  border-radius: 5px;
 }
