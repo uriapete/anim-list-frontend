@@ -1,10 +1,19 @@
 import './App.css';
+import Header from './components/Header';
+import AnimIndex from './pages/AnimIndex';
+import { Route,Routes } from 'react-router';
+
+console.log()
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <Header />
+      <main>
+        <Routes>
+          <Route path='/' element={<AnimIndex/>} />
+        </Routes>
+      </main>
     </div>
   );
 }
