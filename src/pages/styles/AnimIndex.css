@@ -1,0 +1,9 @@
+.search-container{
+    width: 90%;
+}
+
+@media screen and (min-width:500px) {
+    .search-container{
+        width: 65%;
+    }
+}
