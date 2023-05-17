@@ -7,9 +7,15 @@
 
 main{
   background-color: white;
-  width: 70vw;
+  width: 90vw;
   max-width: 1000px;
-  display: flex;
+  /* display: flex; */
   flex-flow: column nowrap;
   border-radius: 5px;
+}
+
+@media screen and (min-width:500px) {
+  main{
+    width: 70vw;
+  }
 }
