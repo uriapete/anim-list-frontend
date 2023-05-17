@@ -6,6 +6,7 @@
 }
 
 main{
+  padding: 1vw;
   background-color: white;
   width: 90vw;
   max-width: 1000px;
@@ -16,6 +17,7 @@ main{
 
 @media screen and (min-width:500px) {
   main{
+    padding: 1.25vw;
     width: 70vw;
   }
 }
