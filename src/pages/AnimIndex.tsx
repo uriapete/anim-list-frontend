@@ -8,6 +8,29 @@ import Button from "react-bootstrap/Button"
 import "./styles/AnimIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 
+const animeClient= new AnimeClient();
+
+async function getAnimSearch(searchTerm: string):Promise<JikanResponse<Anime[]>> {
+    const searchData:JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
+        q: searchTerm
+    })
+    return searchData;
+}
+
+interface AnimSearchProps{
+    searchTerm:string;
+}
+
+function AnimSearch(props:AnimSearchProps):ReactElement{
+    const {searchTerm}=props;
+    // const animData:JikanResponse<Anime[]> = await searchAnim(searchTerm);
+    // console.log(animData);
+    return(
+        <div className="anim-search">
+
+        </div>
+    )
+}
 
 export default function AnimIndex():ReactElement {
     const s:string= useLocation().search;
@@ -50,7 +73,7 @@ export default function AnimIndex():ReactElement {
                     </Form.Group>
                 </Form>
             </Container>
-            {searchStr ? <h1>Hello owo</h1> : <h1>No search uwu</h1>}
+            {searchStr ? <AnimSearch searchTerm={searchStr}/> : <h1>No search uwu</h1>}
         </div>
     );
 }
