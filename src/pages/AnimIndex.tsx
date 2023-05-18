@@ -70,7 +70,7 @@ export default function AnimIndex():ReactElement {
         } catch (error) {
             console.log(error)
         }
-    },[])
+    },[search])
 
 
     return(
