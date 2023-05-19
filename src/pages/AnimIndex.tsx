@@ -35,11 +35,11 @@ export default function AnimIndex():ReactElement {
     
     const searchStr:string|null = search;
     
-    const [holdSearch,setHoldSearch]=useState("");
+    // const [holdSearch,setHoldSearch]=useState("");
     
-    function updateSearchOnInput(e:FormEvent<HTMLInputElement>) {
-        setHoldSearch(e.currentTarget.value);
-    }
+    // function updateSearchOnInput(e:FormEvent<HTMLInputElement>) {
+    //     setHoldSearch(e.currentTarget.value);
+    // }
     // console.log(search)
     
     const navigate:NavigateFunction=useNavigate();
@@ -88,7 +88,7 @@ export default function AnimIndex():ReactElement {
                             Search: 
                         </Form.Label>
                         <Col>
-                            <Form.Control type="text" size="sm" name="search" onInput={updateSearchOnInput}/>
+                            <Form.Control type="text" size="sm" name="search" />
                         </Col>
                         <Col xs="auto" sm="2">
                             <Button type="submit">Search</Button>
