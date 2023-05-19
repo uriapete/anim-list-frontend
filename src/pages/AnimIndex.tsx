@@ -26,6 +26,8 @@ const animeClient= new AnimeClient();
 //     )
 // }
 
+// interface SearchForm extends formdata
+
 export default function AnimIndex():ReactElement {
     const s:string= useLocation().search;
     // const [search, setSearch] = useState(new URLSearchParams(s).get("s"));
@@ -42,11 +44,15 @@ export default function AnimIndex():ReactElement {
     
     const navigate:NavigateFunction=useNavigate();
     
-    function handleSearchSubmit(e:FormEvent) {
+    function handleSearchSubmit(e:FormEvent<HTMLFormElement>) {
         e.preventDefault();
         // console.log("submit!")
+        const form = e.target;
+        // console.log(form);
+        const formData:FormData=new FormData(form as HTMLFormElement);
+        // console.log(formData)
         // return redirect("/uwu");
-        navigate(`/?s=${holdSearch}`)
+        navigate(`/?s=${formData.get("search")}`)
         // navigate(`/?s=test`)
     }
 
