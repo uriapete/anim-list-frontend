@@ -2,12 +2,6 @@
     width: 90%;
 }
 
-@media screen and (min-width:500px) {
-    .search-container{
-        width: 65%;
-    }
-}
-
 .anime-search-result{
     border: 3px solid rgb(154, 78, 161);
     color: rgb(154, 78, 161);
@@ -22,4 +16,10 @@
 
 .last-search-result{
     margin: 5vh auto auto auto;
+}
+
+@media screen and (min-width:500px) {
+    .search-container{
+        width: 65%;
+    }
 }
