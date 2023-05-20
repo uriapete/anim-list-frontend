@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button"
 import "./styles/AnimIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import SearchResult from "../components/SearchResult";
+import ListSearchResults from "../components/ListSearchResults";
 
 // initting our client for api calls
 // deals with anime only
@@ -39,10 +40,10 @@ export default function AnimIndex(): ReactElement {
     }
 
     // for initting search data state
-    const initSearchData: Anime[] = [];
+    // const initSearchData: Anime[] = [];
 
     // init search result data state
-    const [searchData, setSearchData] = useState(initSearchData);
+    const [searchData, setSearchData] = useState<Anime[]|null>(null);
 
     // fn for fetching search data
     async function getAnimSearch(searchTerm: string) {
@@ -68,7 +69,7 @@ export default function AnimIndex(): ReactElement {
         }
     }, [search])
     // ^do it again if search changes
-
+    console.log(searchData)
     // now here's the actual tsx element
     return (
         <div className="AnimIndex" id="AnimIndex">
@@ -91,36 +92,9 @@ export default function AnimIndex(): ReactElement {
             </Container>
             {/* now here's the part that'll render the search results */}
             {/* if we have a search, render the results (using map loop) */}
-            {search ? searchData.map((anime, idx) => {
-                // adding class to first and last results
-                // unused classes for now, but could be useful later
-
-                // var for holding the string that holds the class
-                let positionClass: string = "";
-
-                // switch statement: check the idx of the result
-                switch (idx) {
-                    // case for first result
-                    case 0:
-                        positionClass += " first-search-result"
-                        break;
-
-                    // case for last result
-                    case searchData.length - 1:
-                        positionClass += " last-search-result"
-                        break;
-
-                    // else, do nothing
-                    default:
-                        break;
-                }
-                return(
-                    <SearchResult anime={anime} positionClass={positionClass} idx={idx} />
-                )
-
-                // if there was no search (aka on default home page), render case for no search
-                // i plan for having recommended and random section here, that's for later
-            }) : <h1>No search uwu</h1>}
+            {search ? <ListSearchResults searchData={searchData}/> : <h1>No search uwu</h1>}
+            {/* // if there was no search (aka on default home page), render case for no search
+            // i plan for having recommended and random section here, that's for later */}
         </div>
     );
 }
