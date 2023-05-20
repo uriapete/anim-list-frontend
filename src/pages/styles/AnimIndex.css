@@ -22,4 +22,12 @@
     .search-container{
         width: 65%;
     }
+    .anime-search-result{
+        display: flex;
+        flex-flow: nowrap row;
+        text-align: left;
+    }
+    .anime-text{
+        margin-left: 2vw;
+    }
 }
