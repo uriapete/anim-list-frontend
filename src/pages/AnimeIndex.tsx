@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button"
-import "./styles/AnimIndex.css"
+import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import ListSearchResults from "../components/ListSearchResults";
 
@@ -13,7 +13,7 @@ import ListSearchResults from "../components/ListSearchResults";
 // deals with anime only
 const animeClient = new AnimeClient();
 
-export default function AnimIndex(): ReactElement {
+export default function AnimeIndex(): ReactElement {
     // get the current url as an object
     const loc: string = useLocation().search;
 

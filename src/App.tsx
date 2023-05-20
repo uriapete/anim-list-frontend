@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import AnimIndex from './pages/AnimIndex';
+import AnimeIndex from './pages/AnimeIndex';
 import Error from './pages/Error';
 import { Route,Routes } from 'react-router';
 
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path='/' element={<AnimIndex/>} />
+          <Route path='/' element={<AnimeIndex/>} />
           <Route path='*' element={<Error/>} />
         </Routes>
       </main>
