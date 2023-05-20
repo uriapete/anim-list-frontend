@@ -47,6 +47,9 @@ export default function AnimIndex(): ReactElement {
 
     // fn for fetching search data
     async function getAnimSearch(searchTerm: string) {
+
+        setSearchData(null)
+
         // using our anime client, fetch a search with our search term
         const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
             q: searchTerm
