@@ -3,13 +3,16 @@ import SearchResultProps from "../interfaces/SearchResultProps";
 
 export default function SearchResult(props:SearchResultProps):ReactElement{
 
+    // getting vars out of props
+    const{anime,positionClass,idx}=props;
+
     // part for handling synopsis
 
     // var for synopsis
     let synop: string = "";
 
     // if synopsis exists:
-    if (props.anime.synopsis !== null && props.anime.synopsis !== "" && typeof props.anime.synopsis !== "undefined") {
+    if (anime.synopsis !== null && anime.synopsis !== "" && typeof anime.synopsis !== "undefined") {
         // defining at what amt of chars we'll break the synopsis
         // mobile size first:
         let breakLength: number = 250;
@@ -20,7 +23,7 @@ export default function SearchResult(props:SearchResultProps):ReactElement{
         }
 
         // if synopsis length exceeds breaklength...
-        if (props.anime.synopsis.length > breakLength) {
+        if (anime.synopsis.length > breakLength) {
             // var for index of where to break/slice string
             let breakCharIdx: number = breakLength + 1;
 
@@ -30,7 +33,7 @@ export default function SearchResult(props:SearchResultProps):ReactElement{
             // start loop at breaklength, and work back down
             for (let i = breakLength + 1; i > 0; i--) {
                 // defining char
-                const char = props.anime.synopsis[i];
+                const char = anime.synopsis[i];
 
                 // if space was not found...
                 if (!spaceFound) {
@@ -58,22 +61,22 @@ export default function SearchResult(props:SearchResultProps):ReactElement{
                 }
             }
             // set synop var to split string, add "..."
-            synop = props.anime.synopsis.slice(0, breakCharIdx) + "...";
+            synop = anime.synopsis.slice(0, breakCharIdx) + "...";
         } else {
             // if synopsis is short and length does not exceed breaklength
             // just set it as is
-            synop = props.anime.synopsis
+            synop = anime.synopsis
         }
     }
 
     // now for the actual display
     return (
         // article which contains anime img, titles, studios
-        <article key={props.idx ? props.idx : null} className={"anime-search-result" + props.positionClass}>
+        <article key={idx ? idx : null} className={"anime-search-result" + positionClass}>
 
             {/* div that contains the picture */}
             <div className="anime-img search-img result-item">
-                <img src={props.anime.images.jpg.large_image_url} width={"250vw"} alt={`${props.anime.title_english} poster`} className="anime-img" />
+                <img src={anime.images.jpg.large_image_url} width={"250vw"} alt={`${anime.title_english} poster`} className="anime-img" />
             </div>
 
             {/* div that contains the text */}
@@ -81,21 +84,21 @@ export default function SearchResult(props:SearchResultProps):ReactElement{
 
                 {/* displaying title */}
                 {/* if an english title exists: */}
-                {props.anime.title_english ? (
+                {anime.title_english ? (
                     // display english in big and jp below it in small
                     <>
-                        <h3 className="anime-title anime-title-en">{props.anime.title_english}</h3>
-                        <h6 className="anime-title anime-title-jp">{props.anime.title_japanese}</h6>
+                        <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
+                        <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
                     </>
                     // else, if an english title doesn't exist:
                 ) : (
                     // only display jp in big
-                    <h3 className="anime-title anime-title-jp anime-title-jp-big">{props.anime.title_japanese}</h3>
+                    <h3 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h3>
                 )}
 
                 {/* displaying studios */}
                 {/* begin looping thru studios */}
-                <h6 className="studios">Studios: {props.anime.studios.map((studio, idx) => {
+                <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
                     // start map loop, studio (no s, individual) refers to current studio in our arr of studios
 
                     // setting string var for individual studio
