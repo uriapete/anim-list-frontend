@@ -94,17 +94,21 @@ export default function AnimIndex(): ReactElement {
                 return (
                     // article which contains anime img, titles, studios
                     <article key={idx} className="anime-search-result">
-                        <img src={anime.images.jpg.image_url} alt={`${anime.title_english} poster`} className="anime-img" />
-                        <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
-                        <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
-                        <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
-                            let studStr: string = studio.name;
-                            if (idx > 0) {
-                                studStr = " " + studStr;
-                            }
-                            return studStr;
-                        }).join()}</h6>
-                        <p className="anime-synop">{anime.synopsis}</p>
+                        <div className="anime-img search-img">
+                            <img src={anime.images.jpg.image_url} alt={`${anime.title_english} poster`} className="anime-img" />
+                        </div>
+                        <div className="anime-text">
+                            <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
+                            <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
+                            <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
+                                let studStr: string = studio.name;
+                                if (idx > 0) {
+                                    studStr = " " + studStr;
+                                }
+                                return studStr;
+                            }).join()}</h6>
+                            <p className="anime-synop">{anime.synopsis}</p>
+                        </div>
                     </article>
                 )
                 // else, render case for no search
