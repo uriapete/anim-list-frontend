@@ -91,9 +91,22 @@ export default function AnimIndex(): ReactElement {
             {/* now here's the part that'll render the search results */}
             {/* if we have a search, render the results (using map loop) */}
             {search ? searchData.map((anime, idx) => {
+                let positionClass:string="";
+                switch (idx) {
+                    case 0:
+                        positionClass+=" first-search-result"
+                        break;
+                
+                    case searchData.length-1:
+                        positionClass+=" last-search-result"
+                        break;
+                
+                    default:
+                        break;
+                }
                 return (
                     // article which contains anime img, titles, studios
-                    <article key={idx} className="anime-search-result">
+                    <article key={idx} className={"anime-search-result"+positionClass}>
                         <div className="anime-img search-img">
                             <img src={anime.images.jpg.image_url} alt={`${anime.title_english} poster`} className="anime-img" />
                         </div>
