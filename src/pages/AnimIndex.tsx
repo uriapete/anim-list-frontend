@@ -72,7 +72,7 @@ export default function AnimIndex(): ReactElement {
         }
     }, [search])
     // ^do it again if search changes
-    console.log(searchData)
+    
     // now here's the actual tsx element
     return (
         <div className="AnimIndex" id="AnimIndex">
