@@ -80,9 +80,9 @@ export default function AnimeIndex(): ReactElement {
             <Container className="search-container" fluid>
                 <Form className="search" onSubmit={handleSearchSubmit}>
                     <Form.Group className="search-form-group" as={Row} controlId="search-bar">
-                        <Col xs="auto" sm="2">
+                        <Col xs="2" sm="auto">
                             <Form.Label>
-                                Search:
+                                Search Anime:
                             </Form.Label>
                         </Col>
                         <Col>
