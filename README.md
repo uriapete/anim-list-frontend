@@ -8,12 +8,12 @@ One may be new to anime or is bored and in the mood to browse the medium. This s
 Using Jikan-TS, a TypeScript wrapper for Jikan, an unofficial API of MyAnimeList, for retrieving show data and information, and React as a frontend, the site aims to be quick and easy to use.
 
 ### Where is it?
-Hold on there, pardner! Construction's in progress!
+You can find it [here](https://anime-moelist.netlify.app/)! Note: it is still under heavy construction.
 
 ## User Stories
 ### MVP
 As a user, I want to be able to...
-- [ ] Search up a show by title and see results in order to be able to find information easily
+- [x] Search up a show by title and see results in order to be able to find information easily
 - [ ] See detailed information about shows in order to be able to know what the show is about
 ### Stretch/Extra
 As a user, I want to be able to...
