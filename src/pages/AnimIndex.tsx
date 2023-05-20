@@ -111,8 +111,16 @@ export default function AnimIndex(): ReactElement {
                             <img src={anime.images.jpg.image_url} alt={`${anime.title_english} poster`} className="anime-img" />
                         </div>
                         <div className="anime-text result-item">
-                            <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
-                            <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
+                            {/* <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
+                            <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6> */}
+                            {anime.title_english ? (
+                                <>
+                                    <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
+                                    <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
+                                </>
+                            ) : (
+                                    <h3 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h3> 
+                            )}
                             <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
                                 let studStr: string = studio.name;
                                 if (idx > 0) {
