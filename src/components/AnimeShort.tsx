@@ -1,10 +1,16 @@
 import { ReactElement } from "react";
-import SearchResultProps from "../interfaces/SearchResultProps";
+import AnimeShortProps from "../interfaces/AnimeShortProps";
 
-export default function SearchResult(props:SearchResultProps):ReactElement{
+export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
     // getting vars out of props
-    const{anime,positionClass,idx}=props;
+    const{anime,additionalClassNames,idx}=props;
+
+    // processing additional class names
+    let additionalClasses:string="";
+    if(additionalClassNames){
+        additionalClasses=" "+additionalClassNames;
+    }
 
     // part for handling synopsis
 
@@ -72,15 +78,15 @@ export default function SearchResult(props:SearchResultProps):ReactElement{
     // now for the actual display
     return (
         // article which contains anime img, titles, studios
-        <article key={idx ? idx : null} className={"anime-search-result" + positionClass}>
+        <article key={idx ? idx : null} className={"anime-short" + additionalClasses}>
 
             {/* div that contains the picture */}
-            <div className="anime-img search-img result-item">
+            <div className="anime-img anime-short-img short-item">
                 <img src={anime.images.jpg.large_image_url} width={"250vw"} alt={`${anime.title_english} poster`} className="anime-img" />
             </div>
 
             {/* div that contains the text */}
-            <div className="anime-text result-item">
+            <div className="anime-text short-item">
 
                 {/* displaying title */}
                 {/* if an english title exists: */}

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import ListSearchResultsProps from "../interfaces/ListSearchResultsProps";
-import SearchResult from "./SearchResult";
+import AnimeShort from "./AnimeShort";
 
 export default function ListSearchResults(props:ListSearchResultsProps):ReactElement{
     // destructuring object for easy access
@@ -41,7 +41,7 @@ export default function ListSearchResults(props:ListSearchResultsProps):ReactEle
                             break;
                     }
                     return (
-                        <SearchResult anime={anime} positionClass={positionClass} idx={idx} />
+                        <AnimeShort anime={anime} additionalClassNames={positionClass} idx={idx} />
                     )
                 })}
             </>

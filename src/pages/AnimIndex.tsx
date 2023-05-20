@@ -7,7 +7,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button"
 import "./styles/AnimIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
-import SearchResult from "../components/SearchResult";
 import ListSearchResults from "../components/ListSearchResults";
 
 // initting our client for api calls
