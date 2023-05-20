@@ -1,6 +1,7 @@
 import { Anime } from "@tutkli/jikan-ts";
 
 export default interface SearchResultProps{
-    anime:Anime
-    idx:number
+    anime:Anime;
+    idx?:number;
+    positionClass:string;
 }
