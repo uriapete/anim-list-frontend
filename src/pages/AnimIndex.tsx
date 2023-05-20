@@ -104,6 +104,39 @@ export default function AnimIndex(): ReactElement {
                     default:
                         break;
                 }
+                let synop:string="";
+                if(anime.synopsis!==null&&anime.synopsis!==""&&typeof anime.synopsis!=="undefined"){
+                    console.log(anime.synopsis.length)
+                    let breakLength:number=250;
+                    if(window.innerWidth>=500){
+                        breakLength = 700
+                    }
+                    if(anime.synopsis.length>breakLength){
+                        let breakCharIdx:number=breakLength+1;
+                        let spaceFound:boolean=false
+                        for (let i = breakLength+1; i > 0; i--) {
+                            const char = anime.synopsis[i];
+                            if(!spaceFound){
+                                if(char===" "){
+                                    spaceFound=true;
+                                    continue;
+                                }else{
+                                    continue;
+                                }
+                            }else{
+                                if(char!==" "){
+                                    breakCharIdx=i+1;
+                                    break;
+                                }else{
+                                    continue;
+                                }
+                            }
+                        }
+                        synop=anime.synopsis.slice(0,breakCharIdx)+"...";
+                    }else{
+                        synop=anime.synopsis
+                    }
+                }
                 return (
                     // article which contains anime img, titles, studios
                     <article key={idx} className={"anime-search-result"+positionClass}>
@@ -128,7 +161,7 @@ export default function AnimIndex(): ReactElement {
                                 }
                                 return studStr;
                             }).join()}</h6>
-                            <p className="anime-synop">{anime.synopsis}</p>
+                            {synop ? (<p className="anime-synop">{synop}</p>):(<p>No synopsis available.</p>)}
                         </div>
                     </article>
                 )
