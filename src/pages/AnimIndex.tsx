@@ -72,18 +72,20 @@ export default function AnimIndex(): ReactElement {
         }
     }, [search])
     // ^do it again if search changes
-    
+
     // now here's the actual tsx element
     return (
         <div className="AnimIndex" id="AnimIndex">
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
-            <Container className="search-container">
+            <Container className="search-container" fluid>
                 <Form className="search" onSubmit={handleSearchSubmit}>
-                    <Form.Group className="" as={Row} controlId="search-bar">
-                        <Form.Label column xs="auto" sm="2">
-                            Search:
-                        </Form.Label>
+                    <Form.Group className="search-form-group" as={Row} controlId="search-bar">
+                        <Col xs="auto" sm="2">
+                            <Form.Label>
+                                Search:
+                            </Form.Label>
+                        </Col>
                         <Col>
                             <Form.Control type="text" size="sm" name="search" />
                         </Col>

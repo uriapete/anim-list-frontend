@@ -2,6 +2,26 @@
     width: 90%;
 }
 
+.search-form-group{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.search-form-group > *{
+    margin: auto 5px;
+    padding: 0;
+}
+
+.form-label{
+    margin: auto;
+}
+
+/* .search-form-group *{
+    height: 38px;
+    line-height: 38px;
+} */
+
 .anime-search-result{
     border: 3px solid rgb(154, 78, 161);
     color: rgb(154, 78, 161);
