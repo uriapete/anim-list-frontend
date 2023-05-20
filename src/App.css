@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+main{
+  padding: 1vw;
+  background-color: white;
+  width: 90vw;
+  max-width: 1000px;
+  /* display: flex; */
+  flex-flow: column nowrap;
+  border-radius: 5px;
+}
+
+@media screen and (min-width:500px) {
+  main{
+    padding: 1.25vw;
+    width: 70vw;
+  }
+}

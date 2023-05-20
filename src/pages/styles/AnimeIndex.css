@@ -1,0 +1,53 @@
+.search-container{
+    width: 90%;
+}
+
+.search-form-group{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.search-form-group > *{
+    margin: auto 5px;
+    padding: 0;
+}
+
+.form-label{
+    margin: auto;
+}
+
+/* .search-form-group *{
+    height: 38px;
+    line-height: 38px;
+} */
+
+.anime-short{
+    border: 3px solid rgb(154, 78, 161);
+    color: rgb(154, 78, 161);
+    border-radius: 5px;
+    padding: 1vh 0.5vw;
+    margin: 5vh auto;
+}
+
+.first-search-result{
+    margin: 3.5vh auto 5vh auto;
+}
+
+.last-search-result{
+    margin: 5vh auto auto auto;
+}
+
+@media screen and (min-width:500px) {
+    .search-container{
+        width: 65%;
+    }
+    .anime-short{
+        display: flex;
+        flex-flow: nowrap row;
+        text-align: left;
+    }
+    .anime-text{
+        margin-left: 2vw;
+    }
+}
