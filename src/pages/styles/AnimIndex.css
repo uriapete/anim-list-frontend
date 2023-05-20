@@ -11,5 +11,7 @@
 .anime-search-result{
     border: 3px solid rgb(154, 78, 161);
     color: rgb(154, 78, 161);
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 1vh 0.5vw;
+    margin: 5vh auto;
 }
