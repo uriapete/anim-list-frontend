@@ -107,10 +107,10 @@ export default function AnimIndex(): ReactElement {
                 return (
                     // article which contains anime img, titles, studios
                     <article key={idx} className={"anime-search-result"+positionClass}>
-                        <div className="anime-img search-img">
+                        <div className="anime-img search-img result-item">
                             <img src={anime.images.jpg.image_url} alt={`${anime.title_english} poster`} className="anime-img" />
                         </div>
-                        <div className="anime-text">
+                        <div className="anime-text result-item">
                             <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
                             <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
                             <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
