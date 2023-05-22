@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import AnimeShortProps from "../interfaces/AnimeShortProps";
+import { Link } from "react-router-dom";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
@@ -77,62 +78,63 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
     // now for the actual display
     return (
-        // article which contains anime img, titles, studios
-        <article key={idx ? idx : null} className={"anime-short" + additionalClasses}>
+        <Link className="anime-short-link" to={`anime/${anime.mal_id}`}>
+            {/* // article which contains anime img, titles, studios */}
+            <article key={idx ? idx : null} className={"anime-short" + additionalClasses}>
+                {/* div that contains the picture */}
+                <div className="anime-img anime-short-img short-item">
+                    <img src={anime.images.jpg.large_image_url} width={"250vw"} alt={`${anime.title_english} poster`} className="anime-img" />
+                </div>
 
-            {/* div that contains the picture */}
-            <div className="anime-img anime-short-img short-item">
-                <img src={anime.images.jpg.large_image_url} width={"250vw"} alt={`${anime.title_english} poster`} className="anime-img" />
-            </div>
+                {/* div that contains the text */}
+                <div className="anime-text short-item">
 
-            {/* div that contains the text */}
-            <div className="anime-text short-item">
+                    {/* displaying title */}
+                    {/* if an english title exists: */}
+                    {anime.title_english ? (
+                        // display english in big and jp below it in small
+                        <>
+                            <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
+                            <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
+                        </>
+                        // else, if an english title doesn't exist:
+                    ) : (
+                        // only display jp in big
+                        <h3 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h3>
+                    )}
 
-                {/* displaying title */}
-                {/* if an english title exists: */}
-                {anime.title_english ? (
-                    // display english in big and jp below it in small
-                    <>
-                        <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
-                        <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
-                    </>
-                    // else, if an english title doesn't exist:
-                ) : (
-                    // only display jp in big
-                    <h3 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h3>
-                )}
+                    {/* displaying studios */}
+                    {/* begin looping thru studios */}
+                    <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
+                        // start map loop, studio (no s, individual) refers to current studio in our arr of studios
 
-                {/* displaying studios */}
-                {/* begin looping thru studios */}
-                <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
-                    // start map loop, studio (no s, individual) refers to current studio in our arr of studios
+                        // setting string var for individual studio
+                        let studStr: string = studio.name;
 
-                    // setting string var for individual studio
-                    let studStr: string = studio.name;
+                        // if our curr studio is not the first on our list...
+                        // add a space " " before the studio name
+                        if (idx > 0) {
+                            studStr = " " + studStr;
+                        }
 
-                    // if our curr studio is not the first on our list...
-                    // add a space " " before the studio name
-                    if (idx > 0) {
-                        studStr = " " + studStr;
-                    }
+                        // map gives an array of returned vars, so we'll add our studio strings to the list
+                        return studStr;
 
-                    // map gives an array of returned vars, so we'll add our studio strings to the list
-                    return studStr;
+                        // and then join the array together for the final display
+                    }).join()}</h6>
+                    {/* the join() func will add the commas for us, but not add them when there's only one, which is nice */}
 
-                    // and then join the array together for the final display
-                }).join()}</h6>
-                {/* the join() func will add the commas for us, but not add them when there's only one, which is nice */}
-
-                {/* displaying synopsis */}
-                {/* 
-                                the synopsis has already been proccessed above
-                                if there is a synopsis, it would've been assigned to synop and cut if it was too long
-                                if there wasn't a synopsis, synop would be "", which is falsy
-                            */}
-                {/* therefore: if synop is defined, display it */}
-                {/* if not, display "none available" message */}
-                {synop ? (<p className="anime-synop">{synop}</p>) : (<p>No synopsis available.</p>)}
-            </div>
-        </article>
+                    {/* displaying synopsis */}
+                    {/* 
+                        the synopsis has already been proccessed above
+                        if there is a synopsis, it would've been assigned to synop and cut if it was too long
+                        if there wasn't a synopsis, synop would be "", which is falsy
+                    */}
+                    {/* therefore: if synop is defined, display it */}
+                    {/* if not, display "none available" message */}
+                    {synop ? (<p className="anime-synop">{synop}</p>) : (<p>No synopsis available.</p>)}
+                </div>
+            </article>  
+        </Link>
     )
 }
