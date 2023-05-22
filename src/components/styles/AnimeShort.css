@@ -1,3 +1,7 @@
+.anime-short-link{
+    text-decoration: none;
+}
+
 .anime-short {
     border: 3px solid rgb(154, 78, 161);
     color: rgb(154, 78, 161);
