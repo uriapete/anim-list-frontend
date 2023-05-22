@@ -1,0 +1,20 @@
+.anime-short {
+    border: 3px solid rgb(154, 78, 161);
+    color: rgb(154, 78, 161);
+    border-radius: 5px;
+    padding: 1vh 0.5vw;
+    margin: 5vh auto;
+}
+
+@media screen and (min-width:500px) {
+    .anime-short {
+        display: flex;
+        flex-flow: nowrap row;
+        text-align: left;
+    }
+
+    .anime-text {
+        margin-left: 2vw;
+    }
+    
+}
