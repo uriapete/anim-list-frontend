@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
 import "./styles/AnimeShow.css";
-import { useParams } from "react-router";
+import { Params, useParams } from "react-router";
 
 export default function AnimeShow():ReactElement{
-    const {malId} = useParams()
+    const params:Params<string> = useParams()
+    const malId:number=parseInt(params.malId!);
     return(
         <h1>Test</h1>
     )
