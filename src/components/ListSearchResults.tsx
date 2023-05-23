@@ -41,7 +41,7 @@ export default function ListSearchResults(props:ListSearchResultsProps):ReactEle
                             break;
                     }
                     return (
-                        <AnimeShort anime={anime} additionalClassNames={positionClass} idx={idx} />
+                        <AnimeShort anime={anime} additionalClassNames={positionClass} key={idx} idx={idx} />
                     )
                 })}
             </>
