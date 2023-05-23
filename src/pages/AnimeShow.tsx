@@ -24,7 +24,7 @@ export default function AnimeShow():ReactElement{
     },[])
 
     return(
-        <div className="anime-show">
+        <div className="anime-show AnimeShow" id="anime-show">
             {anime?
             <>
                 <h1>{anime.title_english}</h1>
