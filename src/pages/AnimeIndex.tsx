@@ -74,7 +74,7 @@ export default function AnimeIndex(): ReactElement {
 
     // now here's the actual tsx element
     return (
-        <div className="AnimIndex" id="AnimIndex">
+        <div className="AnimeIndex anime-index" id="anime-index">
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
             <Container className="search-container" fluid>
