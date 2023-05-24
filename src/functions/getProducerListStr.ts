@@ -6,14 +6,14 @@ export default function getProducerListStr(producers:JikanResource[]):string {
     let producerDisp: string = "";
     switch (producers.length) {
         case 1:
-            producerDisp = `Producers: ${producerList}`
+            producerDisp = `Producer: ${producerList}`
             break;
 
         case 0:
             break;
 
         default:
-            producerDisp = `Producerss: ${producerList}`
+            producerDisp = `Producers: ${producerList}`
             break;
     }
     return producerDisp;
