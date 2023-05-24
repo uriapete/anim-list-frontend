@@ -2,6 +2,8 @@ import { ReactElement, useEffect, useState } from "react";
 import "./styles/AnimeShow.css";
 import { Params, useParams } from "react-router";
 import { AnimeClient,Anime,JikanResponse } from "@tutkli/jikan-ts";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -38,7 +40,12 @@ export default function AnimeShow():ReactElement{
                         // only display jp in big
                         <h1 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h1>
                     )}
-                    <img src={anime.images.jpg.large_image_url} alt={`Image/Poster of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
+                    <Col as={"div"} className="img-col">
+                        <img src={anime.images.jpg.large_image_url} alt={`Image/Poster of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
+                    </Col>
+                    <Col as={"div"} className="info-col">
+                        <p>{anime.synopsis}</p>
+                    </Col>
             </>
             :
             <h1>Loading...</h1>
