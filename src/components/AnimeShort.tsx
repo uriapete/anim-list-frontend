@@ -3,6 +3,7 @@ import AnimeShortProps from "../interfaces/AnimeShortProps";
 import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
 import getJpTitle from "../functions/getJpTitle";
+import resourceArrToNameListStr from "../functions/resourceArrToNameListStr";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
@@ -77,11 +78,26 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
             synop = anime.synopsis
         }
     }
-    { console.log(anime.titles) }
 
     // getting japanese title
     const jpTitle:string=getJpTitle(anime.titles);
     // animes should always have jp title available, i think
+
+    // get studio list
+    const studioList:string=resourceArrToNameListStr(anime.studios);
+    let studioDisp:string="";
+    switch (anime.studios.length) {
+        case 1:
+            studioDisp=`Studio: ${studioList}`
+            break;
+        
+        case 0:
+            break;
+
+        default:
+            studioDisp=`Studios: ${studioList}`
+            break;
+    }
 
     // now for the actual display
     return (
@@ -104,24 +120,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
-                    <h6 className="studios">Studios: {anime.studios.map((studio, idx) => {
-                        // start map loop, studio (no s, individual) refers to current studio in our arr of studios
-
-                        // setting string var for individual studio
-                        let studStr: string = studio.name;
-
-                        // if our curr studio is not the first on our list...
-                        // add a space " " before the studio name
-                        if (idx > 0) {
-                            studStr = " " + studStr;
-                        }
-
-                        // map gives an array of returned vars, so we'll add our studio strings to the list
-                        return studStr;
-
-                        // and then join the array together for the final display
-                    }).join()}</h6>
-                    {/* the join() func will add the commas for us, but not add them when there's only one, which is nice */}
+                    <h6 className="studios">{studioDisp}</h6>
 
                     {/* displaying synopsis */}
                     {/* 
