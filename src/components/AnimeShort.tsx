@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
 import getJpTitle from "../functions/getJpTitle";
 import resourceArrToNameListStr from "../functions/resourceArrToNameListStr";
+import getStudioListStr from "../functions/getStudioListStr";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
@@ -84,20 +85,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
     // animes should always have jp title available, i think
 
     // get studio list
-    const studioList:string=resourceArrToNameListStr(anime.studios);
-    let studioDisp:string="";
-    switch (anime.studios.length) {
-        case 1:
-            studioDisp=`Studio: ${studioList}`
-            break;
-        
-        case 0:
-            break;
-
-        default:
-            studioDisp=`Studios: ${studioList}`
-            break;
-    }
+    let studioDisp:string=getStudioListStr(anime.studios);
 
     // now for the actual display
     return (
