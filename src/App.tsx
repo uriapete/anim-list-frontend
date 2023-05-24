@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='' element={<AnimeIndex/>} />
           <Route path='anime'>
-            <Route path=':id' element={<AnimeShow/>} />
+            <Route path=':malId' element={<AnimeShow/>} />
           </Route>
           <Route path='*' element={<Error/>} />
         </Routes>
