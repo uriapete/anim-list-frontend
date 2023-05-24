@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import AnimeShortProps from "../interfaces/AnimeShortProps";
 import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
+import getJpTitle from "../functions/getJpTitle";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
@@ -76,6 +77,11 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
             synop = anime.synopsis
         }
     }
+    { console.log(anime.titles) }
+
+    // getting japanese title
+    const jpTitle:string=getJpTitle(anime.titles);
+    // animes should always have jp title available, i think
 
     // now for the actual display
     return (
@@ -91,18 +97,10 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
                 <div className="anime-text short-item">
 
                     {/* displaying title */}
-                    {/* if an english title exists: */}
-                    {anime.title_english ? (
-                        // display english in big and jp below it in small
-                        <>
-                            <h3 className="anime-title anime-title-en">{anime.title_english}</h3>
-                            <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
-                        </>
-                        // else, if an english title doesn't exist:
-                    ) : (
-                        // only display jp in big
-                        <h3 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h3>
-                    )}
+                    {/* first default title */}
+                    <h3 className="anime-title anime-title-default">{anime.titles[0].title}</h3>
+                    {/* then display the jp title */}
+                    {jpTitle!==""?(<h6>{jpTitle}</h6>):false}
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
