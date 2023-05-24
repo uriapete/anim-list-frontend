@@ -84,9 +84,6 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
     const jpTitle:string=getJpTitle(anime.titles);
     // animes should always have jp title available, i think
 
-    // get studio list
-    let studioDisp:string=getStudioListStr(anime.studios);
-
     // now for the actual display
     return (
         <Link className="anime-short-link" to={`anime/${anime.mal_id}`}>
@@ -108,7 +105,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
-                    <h6 className="studios">{studioDisp}</h6>
+                    <h6 className="studios">{getStudioListStr(anime.studios)}</h6>
 
                     {/* displaying synopsis */}
                     {/* 
