@@ -55,9 +55,9 @@ export default function AnimeShow():ReactElement{
         <div className="anime-show AnimeShow" id="anime-show">
             {anime?
             <>
-                    <h1>{defaultTitle!}</h1>
-                    <h3>{jpTitle!}</h3>
-                    <h6>{getEnTitle(anime.titles)}</h6>
+                    <h1 className="jp-title">{jpTitle!}</h1>
+                    <h3 className="default-title">{defaultTitle!}</h3>
+                    <h6 className="en-title-translated">{getEnTitle(anime.titles)}</h6>
                     <Col as={"div"} className="img-col">
                         <img src={anime.images.jpg.large_image_url} alt={`Poster/thumbnail of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
                         <h6 className="alt-titles">{getSynTitleListStr(anime.titles)}</h6>
