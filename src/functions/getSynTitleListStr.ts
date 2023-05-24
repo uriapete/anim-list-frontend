@@ -3,9 +3,10 @@ import getSynonymTitles from "./getSynonymTitles";
 import titleArrToTitleListStr from "./titleArrToTitleListStr";
 
 export default function getSynTitleListStr(titles:JikanResourceTitle[]):string {
-    const titleList: string = titleArrToTitleListStr(getSynonymTitles(titles));
+    const synTitleArr: JikanResourceTitle[] = getSynonymTitles(titles)
+    const titleList: string = titleArrToTitleListStr(synTitleArr);
     let synTitleDisp: string = "";
-    switch (titles.length) {
+    switch (synTitleArr.length) {
         case 1:
             synTitleDisp = `Other title: ${titleList}`
             break;
