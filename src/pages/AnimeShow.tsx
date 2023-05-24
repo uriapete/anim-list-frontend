@@ -14,10 +14,10 @@ export default function AnimeShow():ReactElement{
     async function getAnimeData() {
         setAnime((await animeClient.getAnimeById(malId)).data);
     }
-
+    
     useEffect(()=>{
         try {
-            getAnimeData();            
+            getAnimeData();  
         } catch (error) {
             console.log(error);
         }
@@ -27,7 +27,18 @@ export default function AnimeShow():ReactElement{
         <div className="anime-show AnimeShow" id="anime-show">
             {anime?
             <>
-                <h1>{anime.title_english}</h1>
+                    {anime.title_english ? (
+                        // display english in big and jp below it in small
+                        <>
+                            <h1 className="anime-title anime-title-en">{anime.title_english}</h1>
+                            <h6 className="anime-title anime-title-jp">{anime.title_japanese}</h6>
+                        </>
+                        // else, if an english title doesn't exist:
+                    ) : (
+                        // only display jp in big
+                        <h1 className="anime-title anime-title-jp anime-title-jp-big">{anime.title_japanese}</h1>
+                    )}
+                    <img src={anime.images.jpg.large_image_url} alt={`Image/Poster of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
             </>
             :
             <h1>Loading...</h1>
