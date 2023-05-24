@@ -4,7 +4,7 @@ export default function getSynonymTitles(titles:JikanResourceTitle[]):JikanResou
     let synTitles:JikanResourceTitle[]=[];
     for (let i = 0; i < titles.length; i++) {
         const resourceTitle = titles[i];
-        const {type,title} = resourceTitle;
+        const {type} = resourceTitle;
         if (type==="Synonym"){
             synTitles.push(resourceTitle);
         }
