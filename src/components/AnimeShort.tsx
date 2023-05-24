@@ -3,7 +3,6 @@ import AnimeShortProps from "../interfaces/AnimeShortProps";
 import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
 import getJpTitle from "../functions/getJpTitle";
-import resourceArrToNameListStr from "../functions/resourceArrToNameListStr";
 import getStudioListStr from "../functions/getStudioListStr";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{

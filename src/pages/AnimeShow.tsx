@@ -27,7 +27,7 @@ export default function AnimeShow():ReactElement{
         } catch (error) {
             console.log(error);
         }
-    },[])
+    },[malId])
 
     // console.log(anime)
 
