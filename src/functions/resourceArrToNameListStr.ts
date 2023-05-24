@@ -3,16 +3,16 @@ import { JikanResource } from "@tutkli/jikan-ts";
 export default function resourceArrToNameListStr(resources:JikanResource[]):string{
     return resources.map((resource, idx) => {
         // setting string var for individual resource
-        let studStr: string = resource.name;
+        let nameStr: string = resource.name;
 
         // if our curr resource is not the first on our list...
         // add a space " " before the resource name
         if (idx > 0) {
-            studStr = " " + studStr;
+            nameStr = " " + nameStr;
         }
 
         // map gives an array of returned vars, so we'll add our resource strings to the list
-        return studStr;
+        return nameStr;
 
         // and then join the array together for the final display
     }).join();
