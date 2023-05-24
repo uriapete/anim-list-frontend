@@ -116,7 +116,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
                     {/* first default title */}
                     <h3 className="anime-title anime-title-default">{anime.titles[0].title}</h3>
                     {/* then display the jp title */}
-                    {jpTitle!==""?(<h6>{jpTitle}</h6>):false}
+                    <h6>{jpTitle}</h6>
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
