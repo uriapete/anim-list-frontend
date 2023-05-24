@@ -8,14 +8,14 @@ export default function getSynTitleListStr(titles:JikanResourceTitle[]):string {
     let synTitleDisp: string = "";
     switch (synTitleArr.length) {
         case 1:
-            synTitleDisp = `Other title: ${titleList}`
+            synTitleDisp = `Alternative title: ${titleList}`
             break;
 
         case 0:
             break;
 
         default:
-            synTitleDisp = `Other titles: ${titleList}`
+            synTitleDisp = `Alternative titles: ${titleList}`
             break;
     }
     return synTitleDisp;
