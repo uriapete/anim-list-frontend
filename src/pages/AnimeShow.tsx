@@ -17,7 +17,6 @@ export default function AnimeShow():ReactElement{
 
     const [anime, setAnime] = useState<Anime|null>(null);
 
-    
     useEffect(()=>{
         async function getAnimeData() {
             setAnime((await animeClient.getAnimeFullById(malId)).data);
@@ -27,7 +26,7 @@ export default function AnimeShow():ReactElement{
         } catch (error) {
             console.log(error);
         }
-    },[])
+    },[malId])
 
     // console.log(anime)
 
