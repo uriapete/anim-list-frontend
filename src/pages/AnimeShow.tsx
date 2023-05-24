@@ -8,6 +8,8 @@ import getStudioListStr from "../functions/getStudioListStr";
 import getLicensorListStr from "../functions/getLicensorListStr";
 import getGenreListStr from "../functions/getGenreListStr";
 import getSynTitleListStr from "../functions/getSynTitleListStr";
+import getProducerListStr from "../functions/getProducerListStr";
+import getEnTitle from "../functions/getEnTitle";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -36,17 +38,18 @@ export default function AnimeShow():ReactElement{
             <>
                     <h1>{anime.titles[0].title}</h1>
                     <h5>{getJpTitle(anime.titles)}</h5>
+                    <h6>{getEnTitle(anime.titles)}</h6>
                     <Col as={"div"} className="img-col">
                         <img src={anime.images.jpg.large_image_url} alt={`Poster/thumbnail of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
                         <h6 className="alt-titles">{getSynTitleListStr(anime.titles)}</h6>
                         <h6 className="studios">{getStudioListStr(anime.studios)}</h6>
+                        <h6 className="producers">{getProducerListStr(anime.producers)}</h6>
                         <h6 className="licensors">{getLicensorListStr(anime.licensors)}</h6>
-                        <h6 className="genres">{getGenreListStr(anime.genres,anime.explicit_genres)}</h6>
-                        {/* <h6 className="anime-type">{anime.type}</h6>
-                        {anime.source ? <h6 className="source-type">Adapted from: {anime.source}</h6>:null} */}
+                        <h6 className="genres">{getGenreListStr(anime.genres,anime.explicit_genres)}</h6><h6 className="aud-rating">Rating: {anime.rating}</h6>
+                        <h6 className="year-season-type">{anime.type} {anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}{anime.year}</h6>
                     </Col>
                     <Col as={"div"} className="info-col">
-                        <p>{anime.synopsis}</p>
+                        <p className="synopsis">{anime.synopsis}</p>
                     </Col>
             </>
             :
