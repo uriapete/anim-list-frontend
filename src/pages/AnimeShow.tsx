@@ -32,12 +32,31 @@ export default function AnimeShow():ReactElement{
 
     // console.log(anime)
 
+    let defaultTitle:string;
+    let jpTitle:string;
+    let enTitle:string;
+    let imgUrl:string;
+    let imgAlt:string;
+    let altTitles:string;
+    let studioList:string;
+    let producerList:string;
+    let licensorList:string;
+    let genreList:string;
+    let rating:string;
+    let yearSeasonTypeStr:string;
+    let synop:string;
+
+    if(anime){
+        defaultTitle = anime.titles[0].title;
+        jpTitle = getJpTitle(anime.titles);
+    }
+
     return(
         <div className="anime-show AnimeShow" id="anime-show">
             {anime?
             <>
-                    <h1>{anime.titles[0].title}</h1>
-                    <h5>{getJpTitle(anime.titles)}</h5>
+                    <h1>{defaultTitle!}</h1>
+                    <h3>{jpTitle!}</h3>
                     <h6>{getEnTitle(anime.titles)}</h6>
                     <Col as={"div"} className="img-col">
                         <img src={anime.images.jpg.large_image_url} alt={`Poster/thumbnail of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
