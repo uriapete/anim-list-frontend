@@ -32,43 +32,55 @@ export default function AnimeShow():ReactElement{
 
     // console.log(anime)
 
-    let defaultTitle:string;
-    let jpTitle:string;
-    let enTitle:string;
-    let imgUrl:string;
-    let imgAlt:string;
-    let altTitles:string;
-    let studioList:string;
-    let producerList:string;
-    let licensorList:string;
-    let genreList:string;
-    let rating:string;
-    let yearSeasonTypeStr:string;
-    let synop:string;
+    let defaultTitle:string="";
+    let jpTitle:string="";
+    let enTitle:string="";
+    let imgUrl:string|undefined;
+    let imgAlt:string="";
+    let altTitles:string="";
+    let studioList:string="";
+    let producerList:string="";
+    let licensorList:string="";
+    let genreList:string="";
+    let ratingStr:string="";
+    let yearSeasonTypeStr:string="";
+    let synop:string="";
 
     if(anime){
         defaultTitle = anime.titles[0].title;
         jpTitle = getJpTitle(anime.titles);
+        enTitle = getEnTitle(anime.titles);
+        imgUrl = anime.images.jpg.large_image_url;
+        imgAlt = `Poster/thumbnail of ${anime.titles[0]}`;
+        altTitles = getSynTitleListStr(anime.titles);
+        studioList = getStudioListStr(anime.studios);
+        producerList = getProducerListStr(anime.producers);
+        licensorList = getLicensorListStr(anime.licensors);
+        genreList = getGenreListStr(anime.genres, anime.explicit_genres);
+        ratingStr = `Rating: ${anime.rating}`
+        yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}${anime.year}`
+        synop=anime.synopsis
     }
 
     return(
         <div className="anime-show AnimeShow" id="anime-show">
             {anime?
             <>
-                    <h1 className="jp-title">{jpTitle!}</h1>
-                    <h3 className="default-title">{defaultTitle!}</h3>
-                    <h6 className="en-title-translated">{getEnTitle(anime.titles)}</h6>
+                    <h1 className="jp-title">{jpTitle}</h1>
+                    <h3 className="default-title">{defaultTitle}</h3>
+                    <h6 className="en-title-translated">{enTitle}</h6>
                     <Col as={"div"} className="img-col">
-                        <img src={anime.images.jpg.large_image_url} alt={`Poster/thumbnail of ${anime.title_english ? anime.title_english : anime.title_japanese}`} style={{maxWidth:"100%"}} />
-                        <h6 className="alt-titles">{getSynTitleListStr(anime.titles)}</h6>
-                        <h6 className="studios">{getStudioListStr(anime.studios)}</h6>
-                        <h6 className="producers">{getProducerListStr(anime.producers)}</h6>
-                        <h6 className="licensors">{getLicensorListStr(anime.licensors)}</h6>
-                        <h6 className="genres">{getGenreListStr(anime.genres,anime.explicit_genres)}</h6><h6 className="aud-rating">Rating: {anime.rating}</h6>
-                        <h6 className="year-season-type">{anime.type} {anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}{anime.year}</h6>
+                        <img src={imgUrl} alt={imgAlt} style={{maxWidth:"100%"}} />
+                        <h6 className="alt-titles">{altTitles}</h6>
+                        <h6 className="studios">{studioList}</h6>
+                        <h6 className="producers">{producerList}</h6>
+                        <h6 className="licensors">{licensorList}</h6>
+                        <h6 className="genres">{genreList}</h6>
+                        <h6 className="aud-rating">{ratingStr}</h6>
+                        <h6 className="year-season-type">{yearSeasonTypeStr}</h6>
                     </Col>
                     <Col as={"div"} className="info-col">
-                        <p className="synopsis">{anime.synopsis}</p>
+                        <p className="synopsis">{synop}</p>
                     </Col>
             </>
             :
