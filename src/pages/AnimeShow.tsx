@@ -57,9 +57,9 @@ export default function AnimeShow():ReactElement{
         producerList = getProducerListStr(anime.producers);
         licensorList = getLicensorListStr(anime.licensors);
         genreList = getGenreListStr(anime.genres, anime.explicit_genres);
-        ratingStr = `Rating: ${anime.rating}`
-        yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}${anime.year}`
-        synop=anime.synopsis
+        ratingStr = `Rating: ${anime.rating}`;
+        yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}${anime.year}`;
+        synop=anime.synopsis;
     }
 
     return(
