@@ -2,8 +2,8 @@ import { ReactElement } from "react";
 import AnimeShortProps from "../interfaces/AnimeShortProps";
 import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
-import getJpTitle from "../functions/getJpTitle";
 import getResourceListStr from "../functions/getResourceListStr";
+import getLangTitle from "../functions/getLangTitle";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
@@ -80,7 +80,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
     }
 
     // getting japanese title
-    const jpTitle:string=getJpTitle(anime.titles);
+    const jpTitle:string=getLangTitle(anime.titles,"Japanese");
     // animes should always have jp title available, i think
 
     // now for the actual display
