@@ -110,7 +110,7 @@ export default function AnimeShow():ReactElement{
                 {anime?
                 <>
                     <Row>
-                        <Col as={"div"} className="img-col">
+                        <Col as={"div"} className="img-col" xs="4">
                             <img src={imgUrl} alt={imgAlt} style={{ maxWidth: "100%" }} />
                             <h6 className="alt-titles">{altTitles}</h6>
                             <h6 className="studios">{studioList}</h6>
