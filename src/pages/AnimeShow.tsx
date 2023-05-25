@@ -88,6 +88,13 @@ export default function AnimeShow():ReactElement{
                                 <h6>Streaming on:</h6>
                                 <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming}/>
                             </ul>
+                            {anime.external?
+                            <>
+                                <ul className="other-ext">
+                                    <h6>Other External Links:</h6>
+                                    <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.external!} />
+                                </ul>
+                            </>:null}
                         </Col>
                     </Col>
             </>
