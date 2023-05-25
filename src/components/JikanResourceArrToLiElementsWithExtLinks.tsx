@@ -4,12 +4,12 @@ import JikanResourceArrToLiElementsWithLinksProps from "../interfaces/JikanResou
 export default function JikanResourceArrToLiElementsWithExtLinks(props:JikanResourceArrToLiElementsWithLinksProps):ReactElement{
     const {resourceList} = props;
     return(
-        <ul className="jk-resources">
+        <>
             {resourceList.map((resource,idx)=>{
                 return(
                     <li className="jk-resource"><a href={resource.url} rel="noreferrer noopener" target="_blank">{resource.name}</a></li>
                 )
             })}
-        </ul>
+        </>
     )
 }
