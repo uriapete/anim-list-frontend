@@ -10,7 +10,7 @@
     margin: 5vh auto;
 }
 
-@media screen and (min-width:500px) {
+@media screen and (min-width:800px) {
     .anime-short {
         display: flex;
         flex-flow: nowrap row;

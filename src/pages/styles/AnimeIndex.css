@@ -30,7 +30,7 @@
     margin: 5vh auto auto auto;
 }
 
-@media screen and (min-width:500px) {
+@media screen and (min-width:800px) {
     .search-container{
         width: 65%;
     }

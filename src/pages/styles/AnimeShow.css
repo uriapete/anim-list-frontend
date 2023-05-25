@@ -1,0 +1,19 @@
+ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
+
+@media screen and (min-width:800px) {
+    #anime-show{
+        text-align: left;
+    }
+    ul li{
+        list-style: disc;
+    }
+    img{
+        margin: 0 0 2.5vh 0;
+    }
+}

@@ -2,7 +2,9 @@ import { JikanResourceTitle } from "@tutkli/jikan-ts";
 import getSynonymTitles from "./getSynonymTitles";
 import titleArrToTitleListStr from "./titleArrToTitleListStr";
 
-export default function getSynTitleListStr(titles:JikanResourceTitle[]):string {
+// basically get resource str but for alt titles
+// as data types are different
+export default function getSynTitleListStr(titles: JikanResourceTitle[]): string {
     const synTitleArr: JikanResourceTitle[] = getSynonymTitles(titles)
     const titleList: string = titleArrToTitleListStr(synTitleArr);
     let synTitleDisp: string = "";
