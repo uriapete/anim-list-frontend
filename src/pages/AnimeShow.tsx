@@ -7,8 +7,8 @@ import getSynTitleListStr from "../functions/getSynTitleListStr";
 import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNamedResourceArrToLiElementsWithExtLinks";
 import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
-import useWindowDimensions from "../functions/useWindowDimensions";
 import { Row } from "react-bootstrap";
+import useDesktopWidthQuery from "../functions/useDesktopWidthQuery";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -62,9 +62,9 @@ export default function AnimeShow():ReactElement{
 
     }
 
-    let {innerWidth}=useWindowDimensions();
+    let desktopScreen = useDesktopWidthQuery();
 
-    if(innerWidth<800){
+    if (!desktopScreen){
         return(
             <div className="anime-show AnimeShow" id="anime-show">
                 {anime?
