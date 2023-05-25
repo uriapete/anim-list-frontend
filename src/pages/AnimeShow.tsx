@@ -81,6 +81,7 @@ export default function AnimeShow():ReactElement{
                     </Col>
                     <Col as={"div"} className="info-col">
                         <p className="synopsis">{synop}</p>
+                        <Col as={"div"} className="links-col"></Col>
                     </Col>
             </>
             :
