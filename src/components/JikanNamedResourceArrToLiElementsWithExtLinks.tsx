@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import JikanResourceArrToLiElementsWithLinksProps from "../interfaces/JikanResourceArrToLiElementsWithLinksProps";
+import JikanNamedResourceArrToLiElementsWithLinksProps from "../interfaces/JikanNamedResourceArrToLiElementsWithLinksProps";
 
-export default function JikanResourceArrToLiElementsWithExtLinks(props:JikanResourceArrToLiElementsWithLinksProps):ReactElement{
+export default function JikanNamedResourceArrToLiElementsWithExtLinks(props:JikanNamedResourceArrToLiElementsWithLinksProps):ReactElement{
     const {resourceList} = props;
     return(
         <>

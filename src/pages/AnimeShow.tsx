@@ -10,6 +10,7 @@ import getGenreListStr from "../functions/getGenreListStr";
 import getSynTitleListStr from "../functions/getSynTitleListStr";
 import getProducerListStr from "../functions/getProducerListStr";
 import getEnTitle from "../functions/getEnTitle";
+import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNamedResourceArrToLiElementsWithExtLinks";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -60,6 +61,7 @@ export default function AnimeShow():ReactElement{
         ratingStr = `Rating: ${anime.rating}`;
         yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}${anime.year}`;
         synop=anime.synopsis;
+
     }
 
     return(
@@ -81,7 +83,12 @@ export default function AnimeShow():ReactElement{
                     </Col>
                     <Col as={"div"} className="info-col">
                         <p className="synopsis">{synop}</p>
-                        <Col as={"div"} className="links-col"></Col>
+                        <Col as={"div"} className="links-col">
+                            <ul className="streaming-links">
+                                <h6>Streaming on:</h6>
+                                <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming}/>
+                            </ul>
+                        </Col>
                     </Col>
             </>
             :
