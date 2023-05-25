@@ -5,3 +5,15 @@ ul{
 li{
     list-style: none;
 }
+
+@media screen and (min-width:800px) {
+    *{
+        text-align: left;
+    }
+    li{
+        list-style: disc;
+    }
+    img{
+        margin: 0 0 2.5vh 0;
+    }
+}
