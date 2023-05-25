@@ -1,7 +1,7 @@
 import { JikanResource } from "@tutkli/jikan-ts";
 import resourceArrToNameListStr from "./resourceArrToNameListStr";
 
-export default function getresourceListStr(resources:JikanResource[],resourceName:string,resourcePlural:string|undefined):string {
+export default function getResourceListStr(resources:JikanResource[],resourceName:string,resourcePlural?:string):string {
     const resourceList: string = resourceArrToNameListStr(resources);
     let resourceDisp: string = "";
     switch (resources.length) {
