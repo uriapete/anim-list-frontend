@@ -11,6 +11,7 @@ import getSynTitleListStr from "../functions/getSynTitleListStr";
 import getProducerListStr from "../functions/getProducerListStr";
 import getEnTitle from "../functions/getEnTitle";
 import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNamedResourceArrToLiElementsWithExtLinks";
+import getResourceListStr from "../functions/getResourceListStr";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -54,10 +55,10 @@ export default function AnimeShow():ReactElement{
         imgUrl = anime.images.jpg.large_image_url;
         imgAlt = `Poster/thumbnail of ${anime.titles[0]}`;
         altTitles = getSynTitleListStr(anime.titles);
-        studioList = getStudioListStr(anime.studios);
-        producerList = getProducerListStr(anime.producers);
-        licensorList = getLicensorListStr(anime.licensors);
-        genreList = getGenreListStr(anime.genres, anime.explicit_genres);
+        studioList = getResourceListStr(anime.studios,"Studio");
+        producerList = getResourceListStr(anime.producers,"Producer");
+        licensorList = getResourceListStr(anime.licensors,"Licensor");
+        genreList = getResourceListStr([...anime.genres, ...anime.explicit_genres],"Genre");
         ratingStr = `Rating: ${anime.rating}`;
         yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}${anime.year}`;
         synop=anime.synopsis;
