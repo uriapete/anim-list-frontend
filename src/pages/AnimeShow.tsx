@@ -67,7 +67,7 @@ export default function AnimeShow():ReactElement{
                     <h1 className="jp-title">{jpTitle}</h1>
                     <h3 className="default-title">{defaultTitle}</h3>
                     <h6 className="en-title-translated">{enTitle}</h6>
-                    <Col as={"div"} className="img-col">
+                    <div className="img-col">
                         <img src={imgUrl} alt={imgAlt} style={{maxWidth:"100%"}} />
                         <h6 className="alt-titles">{altTitles}</h6>
                         <h6 className="studios">{studioList}</h6>
@@ -76,10 +76,10 @@ export default function AnimeShow():ReactElement{
                         <h6 className="genres">{genreList}</h6>
                         <h6 className="aud-rating">{ratingStr}</h6>
                         <h6 className="year-season-type">{yearSeasonTypeStr}</h6>
-                    </Col>
-                    <Col as={"div"} className="info-col">
+                    </div>
+                    <div className="info-col">
                         <p className="synopsis">{synop}</p>
-                        <Col as={"div"} className="links-col">
+                        <div className="links-col">
                             <ul className="streaming-links">
                                 <h6>Streaming on:</h6>
                                 <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming}/>
@@ -91,8 +91,8 @@ export default function AnimeShow():ReactElement{
                                     <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.external!} />
                                 </ul>
                             </>:null}
-                        </Col>
-                    </Col>
+                        </div>
+                    </div>
             </>
             :
             <h1>Loading...</h1>
