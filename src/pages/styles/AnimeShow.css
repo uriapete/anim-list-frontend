@@ -7,10 +7,10 @@ li{
 }
 
 @media screen and (min-width:800px) {
-    *{
+    #anime-show{
         text-align: left;
     }
-    li{
+    ul li{
         list-style: disc;
     }
     img{
