@@ -7,7 +7,7 @@ export default function JikanNamedResourceArrToLiElementsWithExtLinks(props:Jika
         <>
             {resourceList.map((resource,idx)=>{
                 return(
-                    <li className="jk-resource"><a href={resource.url} rel="noreferrer noopener" target="_blank">{resource.name}</a></li>
+                    <li key={idx} className="jk-resource"><a href={resource.url} rel="noreferrer noopener" target="_blank">{resource.name}</a></li>
                 )
             })}
         </>
