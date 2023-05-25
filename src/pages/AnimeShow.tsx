@@ -57,12 +57,12 @@ export default function AnimeShow():ReactElement{
         licensorList = getResourceListStr(anime.licensors,"Licensor");
         genreList = getResourceListStr([...anime.genres, ...anime.explicit_genres],"Genre");
         ratingStr = `Rating: ${anime.rating}`;
-        yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":false}${anime.year}`;
+        yearSeasonTypeStr =`${anime.type} ${anime.season ? anime.season[0].toUpperCase() + anime.season.slice(1)+" ":""}${anime.year?anime.year:""}`;
         synop=anime.synopsis;
 
     }
 
-    let {innerWidth,innerHeight}=useWindowDimensions();
+    let {innerWidth}=useWindowDimensions();
 
     if(innerWidth<800){
         return(
@@ -119,6 +119,19 @@ export default function AnimeShow():ReactElement{
                             <h6 className="genres">{genreList}</h6>
                             <h6 className="aud-rating">{ratingStr}</h6>
                             <h6 className="year-season-type">{yearSeasonTypeStr}</h6>
+                            <div className="links-col">
+                                <ul className="streaming-links">
+                                    <h6>Streaming on:</h6>
+                                    <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
+                                </ul>
+                                {anime.external ?
+                                    <>
+                                        <ul className="other-ext">
+                                            <h6>Other External Links:</h6>
+                                            <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.external!} />
+                                        </ul>
+                                    </> : ""}
+                            </div>
                         </Col>
                         <Col as={"div"} className="info-col">
                             <div className="titles">
@@ -126,19 +139,6 @@ export default function AnimeShow():ReactElement{
                                 <h3 className="default-title">{defaultTitle}</h3>
                                 <h6 className="en-title-translated">{enTitle}</h6>
                                 <p className="synopsis">{synop}</p>
-                                <div className="links-col">
-                                    <ul className="streaming-links">
-                                        <h6>Streaming on:</h6>
-                                        <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
-                                    </ul>
-                                    {anime.external ?
-                                        <>
-                                            <ul className="other-ext">
-                                                <h6>Other External Links:</h6>
-                                                <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.external!} />
-                                            </ul>
-                                        </> : null}
-                                </div>
                             </div>
                         </Col>
                     </Row>
