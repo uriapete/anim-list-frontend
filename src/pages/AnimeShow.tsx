@@ -8,6 +8,7 @@ import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNa
 import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import useWindowDimensions from "../functions/useWindowDimensions";
+import { Row } from "react-bootstrap";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -105,7 +106,47 @@ export default function AnimeShow():ReactElement{
         )
     }else{
         return(
-            <h1>Desktop size!</h1>
+            <div className="anime-show AnimeShow" id="anime-show">
+                {anime?
+                <>
+                    <Row>
+                        <Col as={"div"} className="img-col">
+                            <img src={imgUrl} alt={imgAlt} style={{ maxWidth: "100%" }} />
+                            <h6 className="alt-titles">{altTitles}</h6>
+                            <h6 className="studios">{studioList}</h6>
+                            <h6 className="producers">{producerList}</h6>
+                            <h6 className="licensors">{licensorList}</h6>
+                            <h6 className="genres">{genreList}</h6>
+                            <h6 className="aud-rating">{ratingStr}</h6>
+                            <h6 className="year-season-type">{yearSeasonTypeStr}</h6>
+                        </Col>
+                        <Col as={"div"} className="info-col">
+                            <div className="titles">
+                                <h1 className="jp-title">{jpTitle}</h1>
+                                <h3 className="default-title">{defaultTitle}</h3>
+                                <h6 className="en-title-translated">{enTitle}</h6>
+                                <p className="synopsis">{synop}</p>
+                                <div className="links-col">
+                                    <ul className="streaming-links">
+                                        <h6>Streaming on:</h6>
+                                        <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
+                                    </ul>
+                                    {anime.external ?
+                                        <>
+                                            <ul className="other-ext">
+                                                <h6>Other External Links:</h6>
+                                                <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.external!} />
+                                            </ul>
+                                        </> : null}
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                </>:
+                <h1>
+                    Loading...
+                </h1>}
+            </div>
         )
     }
 }
