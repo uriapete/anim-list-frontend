@@ -8,6 +8,7 @@ import getSynTitleListStr from "../functions/getSynTitleListStr";
 import getEnTitle from "../functions/getEnTitle";
 import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNamedResourceArrToLiElementsWithExtLinks";
 import getResourceListStr from "../functions/getResourceListStr";
+import getLangTitle from "../functions/getLangTitle";
 
 const animeClient:AnimeClient=new AnimeClient();
 
@@ -46,8 +47,8 @@ export default function AnimeShow():ReactElement{
 
     if(anime){
         defaultTitle = anime.titles[0].title;
-        jpTitle = getJpTitle(anime.titles);
-        enTitle = getEnTitle(anime.titles);
+        jpTitle = getLangTitle(anime.titles,"Japanese");
+        enTitle = getLangTitle(anime.titles, "English");
         imgUrl = anime.images.jpg.large_image_url;
         imgAlt = `Poster/thumbnail of ${anime.titles[0]}`;
         altTitles = getSynTitleListStr(anime.titles);
