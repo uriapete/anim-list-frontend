@@ -3,7 +3,7 @@ import AnimeShortProps from "../interfaces/AnimeShortProps";
 import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
 import getJpTitle from "../functions/getJpTitle";
-import getStudioListStr from "../functions/getStudioListStr";
+import getResourceListStr from "../functions/getResourceListStr";
 
 export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
@@ -104,7 +104,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
-                    <h6 className="studios">{getStudioListStr(anime.studios)}</h6>
+                    <h6 className="studios">{getResourceListStr(anime.studios,"Studio")}</h6>
 
                     {/* displaying synopsis */}
                     {/* 
