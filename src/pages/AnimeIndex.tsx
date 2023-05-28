@@ -43,6 +43,7 @@ export default function AnimeIndex(): ReactElement {
 
     // init search result data state
     const [searchData, setSearchData] = useState<Anime[]|null>(null);
+    const [numPages, setNumPages] = useState<number>(0);
 
     // fn for fetching search data
     async function getAnimSearch(searchTerm: string) {
