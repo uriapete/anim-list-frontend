@@ -6,13 +6,13 @@ const animeClient:AnimeClient=new AnimeClient();
 export default function useAnimeSearch(search:string) {
 
     // init search result data state
-    const [searchData, setSearchData] = useState<Anime[] | null>(null);
+    const [searchData, setSearchData] = useState<Anime[]>([]);
     const [numPages, setNumPages] = useState<number>(0);
     
     // fn for fetching search data
     async function getAnimSearch(searchTerm: string) {
     
-        setSearchData(null)
+        setSearchData([])
     
         // using our anime client, fetch a search with our search term
         const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
