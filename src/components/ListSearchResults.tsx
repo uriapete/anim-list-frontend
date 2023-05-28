@@ -19,7 +19,7 @@ export default function ListSearchResults(props:ListSearchResultsProps):ReactEle
             <>
                 {searchData!.map((anime, idx) => {
                     // adding class to first and last results
-                    // unused classes for now, but could be useful later
+                    // these classes have slightly diff. margins
 
                     // var for holding the string that holds the class
                     let positionClass: string = "";
