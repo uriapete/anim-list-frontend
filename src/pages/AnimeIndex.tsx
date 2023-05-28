@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button"
 import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import ListSearchResults from "../components/ListSearchResults";
+import useSearchData from "../functions/useSearchData";
 
 // initting our client for api calls
 // deals with anime only
@@ -38,40 +39,7 @@ export default function AnimeIndex(): ReactElement {
         navigate(`/?s=${formData.get("search")}`)
     }
 
-    // for initting search data state
-    // const initSearchData: Anime[] = [];
-
-    // init search result data state
-    const [searchData, setSearchData] = useState<Anime[]|null>(null);
-    const [numPages, setNumPages] = useState<number>(0);
-
-    // fn for fetching search data
-    async function getAnimSearch(searchTerm: string) {
-
-        setSearchData(null)
-
-        // using our anime client, fetch a search with our search term
-        const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
-            q: searchTerm
-        })
-
-        // make search data available to this component
-        setSearchData(searchData.data);
-    }
-
-    // using effect for enabling dynamic loading of search results
-    useEffect(() => {
-        // try/catch, log err if err is caught
-        try {
-            // if there's a search term set, api call for search
-            if (search) {
-                getAnimSearch(search);
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }, [search])
-    // ^do it again if search changes
+    const {searchData,numPages}=useSearchData(search!);
 
     // now here's the actual tsx element
     return (
@@ -101,7 +69,7 @@ export default function AnimeIndex(): ReactElement {
             {/* if we have a search, render the results (using map loop) */}
             {search ? <ListSearchResults searchData={searchData}/> :
             <div className="home-page">
-                
+
             </div>}
             {/* // if there was no search (aka on default home page), render case for no search
             // i plan for having recommended and random section here, that's for later */}
