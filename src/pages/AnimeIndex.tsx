@@ -75,6 +75,8 @@ export default function AnimeIndex(): ReactElement {
     // now here's the actual tsx element
     return (
         <div className="AnimeIndex anime-index" id="anime-index">
+            {search ? null :
+                <h1>Welcome to MoeList!</h1>}
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
             <Container className="search-container" fluid>
@@ -96,7 +98,10 @@ export default function AnimeIndex(): ReactElement {
             </Container>
             {/* now here's the part that'll render the search results */}
             {/* if we have a search, render the results (using map loop) */}
-            {search ? <ListSearchResults searchData={searchData}/> : <h1>No search uwu</h1>}
+            {search ? <ListSearchResults searchData={searchData}/> :
+            <div className="home-page">
+                
+            </div>}
             {/* // if there was no search (aka on default home page), render case for no search
             // i plan for having recommended and random section here, that's for later */}
         </div>
