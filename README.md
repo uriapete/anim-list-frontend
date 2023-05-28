@@ -14,7 +14,7 @@ You can find it [here](https://anime-moelist.netlify.app/)! Note: it is still un
 ### MVP
 As a user, I want to be able to...
 - [x] Search up a show by title and see results in order to be able to find information easily
-- [ ] See detailed information about shows in order to be able to know what the show is about
+- [x] See detailed information about shows in order to be able to know what the show is about
 ### Stretch/Extra
 As a user, I want to be able to...
 - [ ] Login or signup in order to be able to access features of this site without my work being overwritten by someone else
