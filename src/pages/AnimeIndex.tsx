@@ -1,5 +1,5 @@
 import { FormEvent, ReactElement, useEffect, useState } from "react";
-import { AnimeClient, JikanResponse, Anime } from "@tutkli/jikan-ts";
+// import { AnimeClient, JikanResponse, Anime } from "@tutkli/jikan-ts";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -9,10 +9,11 @@ import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import ListSearchResults from "../components/ListSearchResults";
 import useSearchData from "../functions/useSearchData";
+import SearchResultPages from "../components/SearchResultPages";
 
 // initting our client for api calls
 // deals with anime only
-const animeClient = new AnimeClient();
+// const animeClient = new AnimeClient();
 
 export default function AnimeIndex(): ReactElement {
     // get the current url as an object
@@ -20,6 +21,9 @@ export default function AnimeIndex(): ReactElement {
 
     // get the value of query param "s"
     const search: string | null = new URLSearchParams(loc).get("s");
+
+    // get the value of query param "s"
+    const page: string | null = new URLSearchParams(loc).get("page")||"1";
 
     // set up navigate function for redirecting
     const navigate: NavigateFunction = useNavigate();
@@ -39,7 +43,9 @@ export default function AnimeIndex(): ReactElement {
         navigate(`/?s=${formData.get("search")}`)
     }
 
-    const {searchData,numPages}=useSearchData(search!);
+    const {searchData,numPages,searchDataComplete}=useSearchData(search!,parseInt(page));
+
+    // console.log(useLocation().pathname)
 
     // now here's the actual tsx element
     return (
@@ -67,7 +73,9 @@ export default function AnimeIndex(): ReactElement {
             </Container>
             {/* now here's the part that'll render the search results */}
             {/* if we have a search, render the results (using map loop) */}
-            {search ? <ListSearchResults searchData={searchData}/> :
+            {/* <ListSearchResults searchData={searchDataComplete}/> */}
+            {/* console.log(searchDataComplete); */}
+            {search ? <SearchResultPages searchData={searchDataComplete!}/> :
             <div className="home-page">
 
             </div>}
