@@ -14,7 +14,7 @@ export default function useAnimeSearch(q:string,page?:number) {
     // fn for fetching search data
     async function getAnimSearch() {
     
-        setSearchData([])
+        setSearchData(null)
     
         // using our anime client, fetch a search with our search term
         const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
@@ -38,7 +38,7 @@ export default function useAnimeSearch(q:string,page?:number) {
         } catch (error) {
             console.log(error)
         }
-    }, [q])
+    }, [q,page])
     // ^do it again if search changes
 
     return {searchData,numPages,searchDataComplete};
