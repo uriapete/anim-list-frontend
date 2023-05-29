@@ -1,7 +1,8 @@
 import { useState,useEffect } from "react";
 import { Anime,AnimeClient,JikanResponse } from "@tutkli/jikan-ts";
+import animeClient from "../clients/animeClient";
 
-const animeClient:AnimeClient=new AnimeClient();
+// const animeClient:AnimeClient=new AnimeClient();
 
 export default function useAnimeSearch(q:string,page?:number) {
 

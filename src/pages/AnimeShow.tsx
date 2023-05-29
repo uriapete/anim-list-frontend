@@ -9,8 +9,9 @@ import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Row } from "react-bootstrap";
 import useDesktopWidthQuery from "../functions/useDesktopWidthQuery";
+import animeClient from "../clients/animeClient";
 
-const animeClient: AnimeClient = new AnimeClient();
+// const animeClient: AnimeClient = new AnimeClient();
 
 export default function AnimeShow(): ReactElement {
     // get params
