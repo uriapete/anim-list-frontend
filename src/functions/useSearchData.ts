@@ -3,10 +3,11 @@ import { Anime,AnimeClient,JikanResponse } from "@tutkli/jikan-ts";
 
 const animeClient:AnimeClient=new AnimeClient();
 
-export default function useAnimeSearch(search:string) {
+export default function useAnimeSearch(search:string,page?:number) {
 
     // init search result data state
-    const [searchData, setSearchData] = useState<Anime[]>([]);
+    const [searchDataComplete, setSearchDataComplete] = useState<JikanResponse<Anime[]>|null>(null);
+    const [searchData, setSearchData] = useState<Anime[]|null>(null);
     const [numPages, setNumPages] = useState<number>(0);
     
     // fn for fetching search data
@@ -16,11 +17,13 @@ export default function useAnimeSearch(search:string) {
     
         // using our anime client, fetch a search with our search term
         const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
-            q: searchTerm
+            q: searchTerm,
+            page
         })
     
         // make search data available to this component
         setSearchData(searchData.data);
+        setSearchDataComplete(searchData);
     }
     
     // using effect for enabling dynamic loading of search results
@@ -37,5 +40,5 @@ export default function useAnimeSearch(search:string) {
     }, [search])
     // ^do it again if search changes
 
-    return {searchData,numPages};
+    return {searchData,numPages,searchDataComplete};
 }
