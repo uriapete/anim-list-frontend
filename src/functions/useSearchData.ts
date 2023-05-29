@@ -3,7 +3,7 @@ import { Anime,AnimeClient,JikanResponse } from "@tutkli/jikan-ts";
 
 const animeClient:AnimeClient=new AnimeClient();
 
-export default function useAnimeSearch(search:string,page?:number) {
+export default function useAnimeSearch(q:string,page?:number) {
 
     // init search result data state
     const [searchDataComplete, setSearchDataComplete] = useState<JikanResponse<Anime[]>|null>(null);
@@ -11,13 +11,13 @@ export default function useAnimeSearch(search:string,page?:number) {
     const [numPages, setNumPages] = useState<number>(0);
     
     // fn for fetching search data
-    async function getAnimSearch(searchTerm: string) {
+    async function getAnimSearch() {
     
         setSearchData([])
     
         // using our anime client, fetch a search with our search term
         const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
-            q: searchTerm,
+            q,
             page
         })
     
@@ -31,13 +31,13 @@ export default function useAnimeSearch(search:string,page?:number) {
         // try/catch, log err if err is caught
         try {
             // if there's a search term set, api call for search
-            if (search) {
-                getAnimSearch(search);
+            if (q) {
+                getAnimSearch();
             }
         } catch (error) {
             console.log(error)
         }
-    }, [search])
+    }, [q])
     // ^do it again if search changes
 
     return {searchData,numPages,searchDataComplete};
