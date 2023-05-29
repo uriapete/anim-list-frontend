@@ -18,9 +18,9 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
         )
     }
 
-    const hasNextPage=searchData.pagination?.has_next_page;
+    // const hasNextPage=searchData.pagination?.has_next_page;
     let numPages:number=1;
-    if(hasNextPage){
+    if(typeof searchData.pagination?.items !== "undefined"){
         const countPerPage=searchData.pagination!.items!.per_page;
         const total=searchData.pagination!.items!.total;
         numPages=Math.ceil(total/countPerPage);
@@ -42,8 +42,9 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
     return(
         <div className="search-results-pages">
             {/* <Row className="page-buttons" as={"div"}>{pageBtns}</Row> */}
-            <div className="page-buttons">{pageBtns}</div>
+            <div className="page-buttons page-buttons-top">{pageBtns}</div>
             <ListSearchResults searchData={searchData} />
+            <div className="page-buttons page-buttons-bottom">{pageBtns}</div>
         </div>
     )
 }
