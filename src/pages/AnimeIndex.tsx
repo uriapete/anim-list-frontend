@@ -1,5 +1,4 @@
-import { FormEvent, ReactElement, useEffect, useState } from "react";
-// import { AnimeClient, JikanResponse, Anime } from "@tutkli/jikan-ts";
+import { FormEvent, ReactElement } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -7,11 +6,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button"
 import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
-import ListSearchResults from "../components/ListSearchResults";
 import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
-import { Anime, JikanResponse } from "@tutkli/jikan-ts";
-import animeClient from "../clients/jikanClient";
 
 // initting our client for api calls
 // deals with anime only
@@ -30,7 +26,7 @@ export default function AnimeIndex(): ReactElement {
     // set up navigate function for redirecting
     const navigate: NavigateFunction = useNavigate();
 
-    const {searchData,numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
+    const {numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
 
     // fn for handling when search query is submitted
     function handleSearchSubmit(e: FormEvent) {

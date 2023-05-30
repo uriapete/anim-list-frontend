@@ -13,7 +13,7 @@ function isJkResp(data:Anime[]|JikanResponse<Anime[]>):data is JikanResponse<Ani
 
 export default function ListSearchResults(props:ListSearchResultsProps):ReactElement{
     // destructuring object for easy access
-    const{searchData,resultPage}=props;
+    const{searchData}=props;
 
     if (searchData === null) {
         return (

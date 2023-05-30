@@ -7,21 +7,20 @@ export default function AnimeRandom():ReactElement {
     console.log(url);
 
     const navigate:NavigateFunction=useNavigate();
-
-    async function fetchRandAnime() {
-        try {
-            const response=await fetch(url);
-            const respData:JikanResponse<Anime>=await response.json();
-            const animeData:Anime=respData.data;
-            navigate(`/anime/${animeData.mal_id}`)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
+    
     useEffect(() => {
+        async function fetchRandAnime() {
+            try {
+                const response=await fetch(url);
+                const respData:JikanResponse<Anime>=await response.json();
+                const animeData:Anime=respData.data;
+                navigate(`/anime/${animeData.mal_id}`)
+            } catch (error) {
+                console.log(error);
+            }
+        }
         fetchRandAnime();
-    }, [])
+    }, [navigate])
 
     return(
         <h1>Loading...</h1>
