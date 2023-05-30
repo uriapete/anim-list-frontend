@@ -50,12 +50,12 @@ export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement
                         switch (idx) {
                             // case for first result
                             case 0:
-                                positionClass += " first-search-result"
+                                positionClass += " first-short"
                                 break;
 
                             // case for last result
                             case searchData!.length - 1:
-                                positionClass += " last-search-result"
+                                positionClass += " last-short"
                                 break;
 
                             // else, do nothing
