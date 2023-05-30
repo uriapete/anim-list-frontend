@@ -1,4 +1,5 @@
 import './App.css';
+import AnimeRandom from './components/AnimeRandom';
 import Header from './components/Header';
 import AnimeIndex from './pages/AnimeIndex';
 import AnimeShow from './pages/AnimeShow';
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='' element={<AnimeIndex/>} />
           <Route path='anime'>
+            <Route path='random' element={<AnimeRandom/>} />
             <Route path=':malId' element={<AnimeShow/>} />
           </Route>
           <Route path='*' element={<Error/>} />
