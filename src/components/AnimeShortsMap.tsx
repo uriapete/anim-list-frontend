@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import AnimeShortsMapProps from "../interfaces/AnimeShortsMapProps";
 import AnimeShort from "./AnimeShort";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
+import "./styles/AnimeShortsMap.css"
 
 // one of our props could either be Anime[] or JikanResponse<Anime[]>
 // this is bc the supplied data used to just be Anime[], but changed to JikanResponse<Anime[]>
