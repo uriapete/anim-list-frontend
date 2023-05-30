@@ -9,12 +9,13 @@ import { Anime } from "@tutkli/jikan-ts";
 
 export default function SearchResultPages(props:SearchResultPagesProps):ReactElement {
     const{searchData}=props;
+    let{numPages}=props;
+    
     const path = useLocation().pathname;
     const locSearch = useLocation().search
     const s = new URLSearchParams(locSearch).get('s');
     const page = new URLSearchParams(locSearch).get("page")||"1";
-    
-    let numPages:number=1;
+
     let pageBtns:ReactElement[]=[];
 
     // const [animeSearchResults, setAnimeSearchResults] = useState<Anime[] | null>(searchData!==null?searchData.data:null)
@@ -62,6 +63,16 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
             <h1>Loading...</h1>
         )
     }
+
+    if (typeof numPages === "undefined") {
+        if (typeof searchData.pagination?.items !== "undefined") {
+            const countPerPage = searchData.pagination!.items!.per_page;
+            const total = searchData.pagination!.items!.total;
+            numPages = Math.ceil(total / countPerPage);
+        } else {
+            numPages = 1;
+        }
+    }
         
         
     function resetResults() {
@@ -73,11 +84,6 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
     }
 
     // const hasNextPage=searchData.pagination?.has_next_page;
-    if(typeof searchData.pagination?.items !== "undefined"){
-        const countPerPage=searchData.pagination!.items!.per_page;
-        const total=searchData.pagination!.items!.total;
-        numPages=Math.ceil(total/countPerPage);
-    }
     for (let i = 1; i <= numPages; i++) {
         pageBtns.push((
             <span key={i} className="page-btn-span">
