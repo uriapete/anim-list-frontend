@@ -17,14 +17,6 @@
     margin: auto;
 }
 
-.first-search-result {
-    margin: 3.5vh auto 5vh auto;
-}
-
-.last-search-result {
-    margin: 5vh auto auto auto;
-}
-
 @media screen and (min-width:800px) {
     .search-container {
         width: 65%;
