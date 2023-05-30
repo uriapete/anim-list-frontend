@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import SearchResultPagesProps from "../interfaces/SearchResultPagesProps";
 import { useLocation } from "react-router";
 import { Button } from "react-bootstrap";
-import ListSearchResults from "./ListSearchResults";
+import AnimeShortsMap from "./AnimeShortsMap";
 import './styles/SearchResultPages.css'
 import { Link } from "react-router-dom";
 
@@ -66,7 +66,7 @@ export default function SearchResultPages(props: SearchResultPagesProps): ReactE
     return (
         <div className="search-results-pages">
             <div className="page-buttons page-buttons-top">{pageBtns}</div>
-            <ListSearchResults searchData={searchData.data} />
+            <AnimeShortsMap searchData={searchData.data} />
             <div className="page-buttons page-buttons-bottom">{pageBtns}</div>
         </div>
     )

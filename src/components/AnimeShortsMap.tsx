@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import ListSearchResultsProps from "../interfaces/ListSearchResultsProps";
+import AnimeShortsMapProps from "../interfaces/AnimeShortsMapProps";
 import AnimeShort from "./AnimeShort";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 
@@ -17,7 +17,7 @@ function isJkResp(data: Anime[] | JikanResponse<Anime[]>): data is JikanResponse
     return "pagination" in data;
 }
 
-export default function ListSearchResults(props: ListSearchResultsProps): ReactElement {
+export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement {
     // destructuring object for easy access
     const { searchData } = props;
 
