@@ -22,7 +22,7 @@ export default function AnimeIndex(): ReactElement {
     const loc: string = useLocation().search;
 
     // get the value of query param "s"
-    const search: string | undefined = new URLSearchParams(loc).get("s")||undefined;
+    const search: string | null = new URLSearchParams(loc).get("s");
 
     // get the value of query param "s"
     const page: string = new URLSearchParams(loc).get("page")||"1";
