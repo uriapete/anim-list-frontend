@@ -1,5 +1,4 @@
-import { FormEvent, ReactElement, useEffect, useState } from "react";
-import { AnimeClient, JikanResponse, Anime } from "@tutkli/jikan-ts";
+import { FormEvent, ReactElement } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -7,11 +6,12 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button"
 import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
-import ListSearchResults from "../components/ListSearchResults";
+import useAnimeSearchData from "../functions/useAnimeSearchData";
+import SearchResultPages from "../components/SearchResultPages";
 
 // initting our client for api calls
 // deals with anime only
-const animeClient = new AnimeClient();
+// const animeClient = new AnimeClient();
 
 export default function AnimeIndex(): ReactElement {
     // get the current url as an object
@@ -20,8 +20,13 @@ export default function AnimeIndex(): ReactElement {
     // get the value of query param "s"
     const search: string | null = new URLSearchParams(loc).get("s");
 
+    // get the value of query param "s"
+    const page: string = new URLSearchParams(loc).get("page")||"1";
+
     // set up navigate function for redirecting
     const navigate: NavigateFunction = useNavigate();
+
+    const {numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
 
     // fn for handling when search query is submitted
     function handleSearchSubmit(e: FormEvent) {
@@ -35,46 +40,13 @@ export default function AnimeIndex(): ReactElement {
         const formData: FormData = new FormData(form as HTMLFormElement);
 
         // grab "search" value from formData, redirect to search page using value
-        navigate(`/?s=${formData.get("search")}`)
+        navigate(`/?s=${formData.get("search")}`);
     }
-
-    // for initting search data state
-    // const initSearchData: Anime[] = [];
-
-    // init search result data state
-    const [searchData, setSearchData] = useState<Anime[]|null>(null);
-
-    // fn for fetching search data
-    async function getAnimSearch(searchTerm: string) {
-
-        setSearchData(null)
-
-        // using our anime client, fetch a search with our search term
-        const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
-            q: searchTerm
-        })
-
-        // make search data available to this component
-        setSearchData(searchData.data);
-    }
-
-    // using effect for enabling dynamic loading of search results
-    useEffect(() => {
-        // try/catch, log err if err is caught
-        try {
-            // if there's a search term set, api call for search
-            if (search) {
-                getAnimSearch(search);
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }, [search])
-    // ^do it again if search changes
 
     // now here's the actual tsx element
     return (
         <div className="AnimeIndex anime-index" id="anime-index">
+            {search ? null : <h1>Welcome to MoeList!</h1>}
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
             <Container className="search-container" fluid>
@@ -96,7 +68,12 @@ export default function AnimeIndex(): ReactElement {
             </Container>
             {/* now here's the part that'll render the search results */}
             {/* if we have a search, render the results (using map loop) */}
-            {search ? <ListSearchResults searchData={searchData}/> : <h1>No search uwu</h1>}
+            {/* <ListSearchResults searchData={searchDataComplete}/> */}
+            {/* console.log(searchDataComplete); */}
+            {search !== null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages} /> :
+            <div className="home-page">
+
+            </div>}
             {/* // if there was no search (aka on default home page), render case for no search
             // i plan for having recommended and random section here, that's for later */}
         </div>

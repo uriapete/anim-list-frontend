@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import "./styles/AnimeShow.css";
 import { Params, useParams } from "react-router";
-import { AnimeClient, Anime } from "@tutkli/jikan-ts";
+import { Anime } from "@tutkli/jikan-ts";
 import Col from "react-bootstrap/Col";
 import getSynTitleListStr from "../functions/getSynTitleListStr";
 import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNamedResourceArrToLiElementsWithExtLinks";
@@ -9,8 +9,7 @@ import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Row } from "react-bootstrap";
 import useDesktopWidthQuery from "../functions/useDesktopWidthQuery";
-
-const animeClient: AnimeClient = new AnimeClient();
+import jikanClient from "../clients/jikanClient";
 
 export default function AnimeShow(): ReactElement {
     // get params
@@ -23,7 +22,7 @@ export default function AnimeShow(): ReactElement {
     // use effect for updating anime state
     useEffect(() => {
         async function getAnimeData() {
-            setAnime((await animeClient.getAnimeFullById(malId)).data);
+            setAnime((await jikanClient.anime.getAnimeFullById(malId)).data);
         }
         try {
             getAnimeData();
@@ -107,7 +106,7 @@ export default function AnimeShow(): ReactElement {
                         </div>
                     </>
                     :
-                    <h1>Loading...</h1>
+                    <h1 id="load-show">Loading...</h1>
                 }
             </div>
         )
@@ -150,7 +149,7 @@ export default function AnimeShow(): ReactElement {
                             </Col>
                         </Row>
                     </> :
-                    <h1>
+                    <h1 id="load-show">
                         Loading...
                     </h1>}
             </div>
