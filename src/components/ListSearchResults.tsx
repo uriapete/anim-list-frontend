@@ -37,7 +37,7 @@ export default function ListSearchResults(props: ListSearchResultsProps): ReactE
         } else {
             // else, we map thru the data
             return (
-                <>
+                <div className="anime-list">
                     {searchData.map((anime, idx) => {
                         // adding class to first and last results
                         // these classes have slightly diff. margins
@@ -66,7 +66,7 @@ export default function ListSearchResults(props: ListSearchResultsProps): ReactE
                             <AnimeShort anime={anime} additionalClassNames={positionClass} key={idx} idx={idx} />
                         )
                     })}
-                </>
+                </div>
             )
         }
     } else if (isJkResp(searchData)) {
@@ -80,7 +80,7 @@ export default function ListSearchResults(props: ListSearchResultsProps): ReactE
         } else {
             // else, map thru the data
             return (
-                <>
+                <div className="anime-list">
                     {searchData.data.map((anime, idx, data) => {
                         // adding class to first and last results
                         // these classes have slightly diff. margins
@@ -109,7 +109,7 @@ export default function ListSearchResults(props: ListSearchResultsProps): ReactE
                             <AnimeShort anime={anime} additionalClassNames={positionClass} key={idx} idx={idx} />
                         )
                     })}
-                </>
+                </div>
             )
         }
     } else {
