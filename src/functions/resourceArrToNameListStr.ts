@@ -1,6 +1,8 @@
 import { JikanResource } from "@tutkli/jikan-ts";
 
-export default function resourceArrToNameListStr(resources:JikanResource[]):string{
+// function for turning an arr of JikanResources to one string listing their names
+// ex. Studio1, Studio2, Studio3
+export default function resourceArrToNameListStr(resources: JikanResource[]): string {
     return resources.map((resource, idx) => {
         // setting string var for individual resource
         let nameStr: string = resource.name;

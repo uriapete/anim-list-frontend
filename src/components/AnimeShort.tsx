@@ -5,15 +5,15 @@ import "./styles/AnimeShort.css"
 import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 
-export default function AnimeShort(props: AnimeShortProps):ReactElement{
+export default function AnimeShort(props: AnimeShortProps): ReactElement {
 
     // getting vars out of props
-    const{anime,additionalClassNames,idx}=props;
+    const { anime, additionalClassNames, idx } = props;
 
     // processing additional class names
-    let additionalClasses:string="";
-    if(additionalClassNames){
-        additionalClasses=" "+additionalClassNames;
+    let additionalClasses: string = "";
+    if (additionalClassNames) {
+        additionalClasses = " " + additionalClassNames;
     }
 
     // part for handling synopsis
@@ -80,7 +80,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
     }
 
     // getting japanese title
-    const jpTitle:string=getLangTitle(anime.titles,"Japanese");
+    const jpTitle: string = getLangTitle(anime.titles, "Japanese");
     // animes should always have jp title available, i think
 
     // now for the actual display
@@ -104,7 +104,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
-                    <h6 className="studios">{getResourceListStr(anime.studios,"Studio")}</h6>
+                    <h6 className="studios">{getResourceListStr(anime.studios, "Studio")}</h6>
 
                     {/* displaying synopsis */}
                     {/* 
@@ -116,7 +116,7 @@ export default function AnimeShort(props: AnimeShortProps):ReactElement{
                     {/* if not, display "none available" message */}
                     {synop ? (<p className="anime-synop">{synop}</p>) : (<p>No synopsis available.</p>)}
                 </div>
-            </article>  
+            </article>
         </Link>
     )
 }

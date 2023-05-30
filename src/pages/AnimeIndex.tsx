@@ -9,10 +9,7 @@ import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
 
-// initting our client for api calls
-// deals with anime only
-// const animeClient = new AnimeClient();
-
+// home/index page
 export default function AnimeIndex(): ReactElement {
     // get the current url as an object
     const loc: string = useLocation().search;
@@ -21,12 +18,13 @@ export default function AnimeIndex(): ReactElement {
     const search: string | null = new URLSearchParams(loc).get("s");
 
     // get the value of query param "s"
-    const page: string = new URLSearchParams(loc).get("page")||"1";
+    const page: string = new URLSearchParams(loc).get("page") || "1";
 
     // set up navigate function for redirecting
     const navigate: NavigateFunction = useNavigate();
 
-    const {numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
+    // getting number of pages and complete search data from search data hook
+    const { numPages, searchDataComplete } = useAnimeSearchData(search!, parseInt(page));
 
     // fn for handling when search query is submitted
     function handleSearchSubmit(e: FormEvent) {
@@ -67,13 +65,11 @@ export default function AnimeIndex(): ReactElement {
                 </Form>
             </Container>
             {/* now here's the part that'll render the search results */}
-            {/* if we have a search, render the results (using map loop) */}
-            {/* <ListSearchResults searchData={searchDataComplete}/> */}
-            {/* console.log(searchDataComplete); */}
+            {/* if we have a search, render the results */}
             {search !== null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages} /> :
-            <div className="home-page">
+                <div className="home-page">
 
-            </div>}
+                </div>}
             {/* // if there was no search (aka on default home page), render case for no search
             // i plan for having recommended and random section here, that's for later */}
         </div>
