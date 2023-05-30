@@ -30,6 +30,8 @@ export default function AnimeIndex(): ReactElement {
     // set up navigate function for redirecting
     const navigate: NavigateFunction = useNavigate();
 
+    const {searchData,numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
+
     // fn for handling when search query is submitted
     function handleSearchSubmit(e: FormEvent) {
         // prevent page from reloading
@@ -44,24 +46,6 @@ export default function AnimeIndex(): ReactElement {
         // grab "search" value from formData, redirect to search page using value
         navigate(`/?s=${formData.get("search")}`);
     }
-
-    const {searchData,numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
-    
-    const [resultPage, setResultPage] = useState<ReactElement>(<></>)
-
-    useEffect(() => {
-      const getResultPage = () => {
-        try {
-            if(searchDataComplete!==null){
-                setResultPage(SearchResultPages({ searchData:searchDataComplete, numPages:numPages}));
-            }
-        } catch (error) {
-            console.log(error);
-        }
-      }
-      getResultPage();
-    }, [searchDataComplete,numPages,search,page])
-    
 
     // now here's the actual tsx element
     return (
@@ -90,7 +74,7 @@ export default function AnimeIndex(): ReactElement {
             {/* if we have a search, render the results (using map loop) */}
             {/* <ListSearchResults searchData={searchDataComplete}/> */}
             {/* console.log(searchDataComplete); */}
-            {search!==null ? resultPage :
+            {search !== null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages} /> :
             <div className="home-page">
 
             </div>}

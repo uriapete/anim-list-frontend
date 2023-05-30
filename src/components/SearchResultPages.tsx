@@ -18,44 +18,24 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
 
     let pageBtns:ReactElement[]=[];
 
-    // const [animeSearchResults, setAnimeSearchResults] = useState<Anime[] | null>(searchData!==null?searchData.data:null)
-    // // console.log(searchData);
+    const [searchTerm, setSearchTerm] = useState<string>("");
     
+    // let animeSearchResults:Anime[]|null=searchData!==null?searchData.data:null;
+        
+    // const [resultList, setResultList] = useState<ReactElement>(<></>)
+
     // useEffect(() => {
-    // //   first
-    
-    //   const getAnimeSearchResults = async () => {
+    //   const getResultList= () => {
     //     try {
-    //         // setAnimeSearchResults(null);
-    //         // console.log(searchData);
     //         if(searchData!==null){
-    //             setAnimeSearchResults(searchData.data);
+    //             setResultList(ListSearchResults({searchData:animeSearchResults}))
     //         }
     //     } catch (error) {
-    //         console.log(error);
+    //         console.log(error)
     //     }
     //   }
-    //   getAnimeSearchResults();
+    //   getResultList();
     // }, [searchData,animeSearchResults])
-    // console.log(animeSearchResults);
-    
-        let animeSearchResults:Anime[]|null=searchData!==null?searchData.data:null;
-        
-    const [resultList, setResultList] = useState<ReactElement>(<></>)
-
-    useEffect(() => {
-      const getResultList= () => {
-        try {
-            if(searchData!==null){
-                setResultList(ListSearchResults({searchData:animeSearchResults}))
-            }
-        } catch (error) {
-            console.log(error)
-        }
-      }
-      getResultList();
-    }, [searchData,animeSearchResults])
-    
     
     if (searchData === null) {
         return (
@@ -73,11 +53,10 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
         }
     }
         
-        
     function resetResults() {
         // console.log("reset")
         // animeSearchResults=null;
-        setResultList(ListSearchResults({searchData:null}));
+        // setResultList(ListSearchResults({searchData:null}));
         // console.log(animeSearchResults)
         // setAnimeSearchResults(null)
     }
@@ -89,7 +68,7 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
                 {/* <Col key={i} as={"div"} className="page-btn" xs={numPages}> */}
                     {i!==parseInt(page)?
                     <Link to={`${path}?s=${s}&page=${i}`}>
-                        <Button as={"button"} key={i} onClick={resetResults}>{i}</Button>
+                        <Button as={"button"} key={i}>{i}</Button>
                     </Link>
                     :
                     <Button key={i} disabled>{i}</Button>
@@ -104,8 +83,8 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
         <div className="search-results-pages">
             {/* <Row className="page-buttons" as={"div"}>{pageBtns}</Row> */}
             <div className="page-buttons page-buttons-top">{pageBtns}</div>
-            {/* <ListSearchResults searchData={animeSearchResults} /> */}
-            {resultList}
+            <ListSearchResults searchData={searchData.data} />
+            {/* {resultList} */}
             <div className="page-buttons page-buttons-bottom">{pageBtns}</div>
         </div>
     )
