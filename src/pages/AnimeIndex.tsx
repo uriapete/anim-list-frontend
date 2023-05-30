@@ -11,7 +11,7 @@ import ListSearchResults from "../components/ListSearchResults";
 import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
-import animeClient from "../clients/animeClient";
+import animeClient from "../clients/jikanClient";
 
 // initting our client for api calls
 // deals with anime only

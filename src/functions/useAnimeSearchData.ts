@@ -1,8 +1,6 @@
 import { useState,useEffect } from "react";
 import { Anime,AnimeClient,JikanResponse } from "@tutkli/jikan-ts";
-import animeClient from "../clients/animeClient";
-
-// const animeClient:AnimeClient=new AnimeClient();
+import jikanClient from "../clients/jikanClient";
 
 export default function useAnimeSearchData(q:string,page?:number) {
 
@@ -18,7 +16,7 @@ export default function useAnimeSearchData(q:string,page?:number) {
         setSearchDataComplete(null);
     
         // using our anime client, fetch a search with our search term
-        const searchData: JikanResponse<Anime[]> = await animeClient.getAnimeSearch({
+        const searchData: JikanResponse<Anime[]> = await jikanClient.anime.getAnimeSearch({
             q,
             page
         })
