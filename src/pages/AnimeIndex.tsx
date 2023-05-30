@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button"
 import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import ListSearchResults from "../components/ListSearchResults";
-import useSearchData from "../functions/useSearchData";
+import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
 
 // initting our client for api calls
@@ -43,7 +43,7 @@ export default function AnimeIndex(): ReactElement {
         navigate(`/?s=${formData.get("search")}`)
     }
 
-    const {searchData,numPages,searchDataComplete}=useSearchData(search!,parseInt(page));
+    const {searchData,numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
 
     // console.log(useLocation().pathname)
 

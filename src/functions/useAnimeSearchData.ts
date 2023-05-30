@@ -4,7 +4,7 @@ import animeClient from "../clients/animeClient";
 
 // const animeClient:AnimeClient=new AnimeClient();
 
-export default function useAnimeSearch(q:string,page?:number) {
+export default function useAnimeSearchData(q:string,page?:number) {
 
     // init search result data state
     const [searchDataComplete, setSearchDataComplete] = useState<JikanResponse<Anime[]>|null>(null);
