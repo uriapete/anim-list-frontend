@@ -25,6 +25,15 @@ export default function useAnimeSearchData(q:string,page?:number) {
         // make search data available to this component
         setSearchData(searchData.data);
         setSearchDataComplete(searchData);
+
+        if (typeof searchData.pagination?.items !== "undefined") {
+            const countPerPage = searchData.pagination!.items!.per_page;
+            const total = searchData.pagination!.items!.total;
+            // numPages = Math.ceil(total / countPerPage);
+            setNumPages(Math.ceil(total / countPerPage));
+        }else if (searchData.data.length>0){
+            setNumPages(1);
+        }
     }
     
     // using effect for enabling dynamic loading of search results
