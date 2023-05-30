@@ -10,7 +10,7 @@ import { Anime } from "@tutkli/jikan-ts";
 export default function SearchResultPages(props:SearchResultPagesProps):ReactElement {
     const{searchData}=props;
     let{numPages}=props;
-    
+
     const path = useLocation().pathname;
     const locSearch = useLocation().search
     const s = new URLSearchParams(locSearch).get('s');
@@ -38,15 +38,14 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
     //   getAnimeSearchResults();
     // }, [searchData,animeSearchResults])
     // console.log(animeSearchResults);
-
+    
+        let animeSearchResults:Anime[]|null=searchData!==null?searchData.data:null;
+        
     const [resultList, setResultList] = useState<ReactElement>(<></>)
 
-    let animeSearchResults:Anime[]|null=searchData!==null?searchData.data:null;
-    
     useEffect(() => {
       const getResultList= () => {
         try {
-            // console.log(searchData, searchData !== null && searchData.data);
             if(searchData!==null){
                 setResultList(ListSearchResults({searchData:animeSearchResults}))
             }
