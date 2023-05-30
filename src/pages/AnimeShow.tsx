@@ -106,7 +106,7 @@ export default function AnimeShow(): ReactElement {
                         </div>
                     </>
                     :
-                    <h1>Loading...</h1>
+                    <h1 id="load-show">Loading...</h1>
                 }
             </div>
         )
@@ -149,7 +149,7 @@ export default function AnimeShow(): ReactElement {
                             </Col>
                         </Row>
                     </> :
-                    <h1>
+                    <h1 id="load-show">
                         Loading...
                     </h1>}
             </div>
