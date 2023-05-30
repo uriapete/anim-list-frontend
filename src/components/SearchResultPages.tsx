@@ -18,7 +18,7 @@ export default function SearchResultPages(props:SearchResultPagesProps):ReactEle
 
     let pageBtns:ReactElement[]=[];
 
-    const [searchTerm, setSearchTerm] = useState<string>("");
+    // const [searchTerm, setSearchTerm] = useState<string|null>(null);
     
     // let animeSearchResults:Anime[]|null=searchData!==null?searchData.data:null;
         
