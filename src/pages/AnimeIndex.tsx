@@ -10,6 +10,8 @@ import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import ListSearchResults from "../components/ListSearchResults";
 import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
+import { Anime, JikanResponse } from "@tutkli/jikan-ts";
+import animeClient from "../clients/animeClient";
 
 // initting our client for api calls
 // deals with anime only
@@ -20,10 +22,10 @@ export default function AnimeIndex(): ReactElement {
     const loc: string = useLocation().search;
 
     // get the value of query param "s"
-    const search: string | null = new URLSearchParams(loc).get("s");
+    const search: string | undefined = new URLSearchParams(loc).get("s")||undefined;
 
     // get the value of query param "s"
-    const page: string | null = new URLSearchParams(loc).get("page")||"1";
+    const page: string = new URLSearchParams(loc).get("page")||"1";
 
     // set up navigate function for redirecting
     const navigate: NavigateFunction = useNavigate();
@@ -40,18 +42,31 @@ export default function AnimeIndex(): ReactElement {
         const formData: FormData = new FormData(form as HTMLFormElement);
 
         // grab "search" value from formData, redirect to search page using value
-        navigate(`/?s=${formData.get("search")}`)
+        navigate(`/?s=${formData.get("search")}`);
     }
 
     const {searchData,numPages,searchDataComplete}=useAnimeSearchData(search!,parseInt(page));
+    
+    const [resultPage, setResultPage] = useState<ReactElement>(<></>)
 
-    // console.log(useLocation().pathname)
+    useEffect(() => {
+      const getResultPage = () => {
+        try {
+            if(searchDataComplete!==null){
+                setResultPage(SearchResultPages({ searchData:searchDataComplete, numPages:numPages}));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      }
+      getResultPage();
+    }, [searchDataComplete,numPages,search,page])
+    
 
     // now here's the actual tsx element
     return (
         <div className="AnimeIndex anime-index" id="anime-index">
-            {search ? null :
-                <h1>Welcome to MoeList!</h1>}
+            {search ? null : <h1>Welcome to MoeList!</h1>}
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
             <Container className="search-container" fluid>
@@ -75,7 +90,7 @@ export default function AnimeIndex(): ReactElement {
             {/* if we have a search, render the results (using map loop) */}
             {/* <ListSearchResults searchData={searchDataComplete}/> */}
             {/* console.log(searchDataComplete); */}
-            {search!==null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages}/> :
+            {search!==null ? resultPage :
             <div className="home-page">
 
             </div>}
