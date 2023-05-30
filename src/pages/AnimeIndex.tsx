@@ -75,7 +75,7 @@ export default function AnimeIndex(): ReactElement {
             {/* if we have a search, render the results (using map loop) */}
             {/* <ListSearchResults searchData={searchDataComplete}/> */}
             {/* console.log(searchDataComplete); */}
-            {search ? <SearchResultPages searchData={searchDataComplete!}/> :
+            {search!==null ? <SearchResultPages searchData={searchDataComplete}/> :
             <div className="home-page">
 
             </div>}
