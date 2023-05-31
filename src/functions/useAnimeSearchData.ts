@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 import jikanClient from "../clients/jikanClient";
+import getNumPages from "./getNumPages";
 
 // hook for searching anime and using data of results
 export default function useAnimeSearchData(q: string, page?: number) {
@@ -29,15 +30,7 @@ export default function useAnimeSearchData(q: string, page?: number) {
             setSearchData(searchData.data);
             setSearchDataComplete(searchData);
 
-            // calculating amt. of search pages using total items / items per page
-            if (searchData.pagination?.items) {
-                const countPerPage = searchData.pagination!.items!.per_page;
-                const total = searchData.pagination!.items!.total;
-                setNumPages(Math.ceil(total / countPerPage));
-            } else if (searchData.data.length > 0) {
-                // if required pagination data is not available or supplied, then fall back on 1 as long as there is at least some result
-                setNumPages(1);
-            }
+            setNumPages(getNumPages(searchData));
         }
 
         // try/catch, log err if err is caught
