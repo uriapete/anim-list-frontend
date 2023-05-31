@@ -10,10 +10,10 @@ main{
   background-color: white;
   width: 90vw;
   max-width: 1000px;
-  /* display: flex; */
   flex-flow: column nowrap;
   border-radius: 5px;
-}
+  color: rgb(154, 78, 161);
+  }
 
 @media screen and (min-width:500px) {
   main{
