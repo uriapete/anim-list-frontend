@@ -9,13 +9,21 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
 
     // getting vars out of props
     const { anime, additionalClassNames, idx } = props;
-
+    
     // processing additional class names
     let additionalClasses: string = "";
     if (additionalClassNames) {
         additionalClasses = " " + additionalClassNames;
     }
-
+    
+    if(anime===null){
+        return(
+            <article className={"anime-short"+additionalClasses}>
+                <h1>Loading...</h1>
+            </article>
+        )
+    }
+    
     // part for handling synopsis
 
     // var for synopsis
