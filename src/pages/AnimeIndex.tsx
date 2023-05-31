@@ -10,6 +10,9 @@ import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
 import DisplayTopAnime from "../components/DisplayTopAnime";
 import { TopAnimeFilter } from "@tutkli/jikan-ts";
+import AnimeShort from "../components/AnimeShort";
+import useRandomAnime from "../functions/useRandomAnime";
+import RandomAnimeShort from "../components/RandomAnimeShort";
 
 // home/index page
 export default function AnimeIndex(): ReactElement {
@@ -76,6 +79,11 @@ export default function AnimeIndex(): ReactElement {
             {search !== null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages} /> :
                 <div className="home-page">
                     <h3>Or you can look at stuff we've found:</h3>
+                    <div className="rand-anime">
+                        <h4>Here's some random anime:</h4>
+                        <RandomAnimeShort />
+                        <RandomAnimeShort />
+                    </div>
                     <div className="top-airing">
                         <h4>Here's some of the top anime currently airing, according to MAL:</h4>
                         <DisplayTopAnime filter={TopAnimeFilter.airing} limit={3} />
