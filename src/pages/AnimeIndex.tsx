@@ -10,8 +10,6 @@ import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
 import DisplayTopAnime from "../components/DisplayTopAnime";
 import { TopAnimeFilter } from "@tutkli/jikan-ts";
-import AnimeShort from "../components/AnimeShort";
-import useRandomAnime from "../functions/useRandomAnime";
 import RandomAnimeShort from "../components/RandomAnimeShort";
 
 // home/index page
@@ -49,11 +47,11 @@ export default function AnimeIndex(): ReactElement {
     // now here's the actual tsx element
     return (
         <div className="AnimeIndex anime-index" id="anime-index">
-            {search ? null : 
-            <div className="welcome">
-                <h1 className="welcome-message">Welcome to MoeList!</h1>
-                <h3>You can search for anime:</h3>
-            </div>
+            {search ? null :
+                <div className="welcome">
+                    <h1 className="welcome-message">Welcome to MoeList!</h1>
+                    <h3>You can search for anime:</h3>
+                </div>
             }
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
