@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 import "./styles/AnimeShort.css"
 import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
+import { Anime, JikanResponse } from "@tutkli/jikan-ts";
+
+// checks if supplied data is Anime
+function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
+    return "length" in data;
+}
+
+// checks if supplied data is JikanResponse<Anime>
+function isJkResp(data: Anime | JikanResponse<Anime>): data is JikanResponse<Anime> {
+    return "pagination" in data;
+}
 
 export default function AnimeShort(props: AnimeShortProps): ReactElement {
 
@@ -23,6 +34,8 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
             </article>
         )
     }
+
+    let animeData: Anime=isJkResp(anime)?anime.data:anime;
     
     // part for handling synopsis
 
@@ -30,7 +43,7 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
     let synop: string = "";
 
     // if synopsis exists:
-    if (anime.synopsis !== null && anime.synopsis !== "" && typeof anime.synopsis !== "undefined") {
+    if (animeData!.synopsis !== null && animeData!.synopsis !== "" && typeof animeData!.synopsis !== "undefined") {
         // defining at what amt of chars we'll break the synopsis
         // mobile size first:
         let breakLength: number = 250;
@@ -41,7 +54,7 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
         }
 
         // if synopsis length exceeds breaklength...
-        if (anime.synopsis.length > breakLength) {
+        if (animeData!.synopsis.length > breakLength) {
             // var for index of where to break/slice string
             let breakCharIdx: number = breakLength + 1;
 
@@ -51,7 +64,7 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
             // start loop at breaklength, and work back down
             for (let i = breakLength + 1; i > 0; i--) {
                 // defining char
-                const char = anime.synopsis[i];
+                const char = animeData!.synopsis[i];
 
                 // if space was not found...
                 if (!spaceFound) {
@@ -79,26 +92,26 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
                 }
             }
             // set synop var to split string, add "..."
-            synop = anime.synopsis.slice(0, breakCharIdx) + "...";
+            synop = animeData!.synopsis.slice(0, breakCharIdx) + "...";
         } else {
             // if synopsis is short and length does not exceed breaklength
             // just set it as is
-            synop = anime.synopsis
+            synop = animeData!.synopsis
         }
     }
 
     // getting japanese title
-    const jpTitle: string = getLangTitle(anime.titles, "Japanese");
+    const jpTitle: string = getLangTitle(animeData!.titles, "Japanese");
     // animes should always have jp title available, i think
 
     // now for the actual display
     return (
-        <Link className="anime-short-link" to={`anime/${anime.mal_id}`}>
+        <Link className="anime-short-link" to={`anime/${animeData!.mal_id}`}>
             {/* // article which contains anime img, titles, studios */}
             <article key={idx ? idx : null} className={"anime-short" + additionalClasses}>
                 {/* div that contains the picture */}
                 <div className="anime-img anime-short-img short-item">
-                    <img src={anime.images.jpg.large_image_url} width={"250vw"} alt={`${anime.title_english} poster`} className="anime-img" />
+                    <img src={animeData!.images.jpg.large_image_url} width={"250vw"} alt={`${animeData!.title_english} poster`} className="anime-img" />
                 </div>
 
                 {/* div that contains the text */}
@@ -106,13 +119,13 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
 
                     {/* displaying title */}
                     {/* first default title */}
-                    <h3 className="anime-title anime-title-default">{anime.titles[0].title}</h3>
+                    <h3 className="anime-title anime-title-default">{animeData!.titles[0].title}</h3>
                     {/* then display the jp title */}
                     <h6>{jpTitle}</h6>
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
-                    <h6 className="studios">{getResourceListStr(anime.studios, "Studio")}</h6>
+                    <h6 className="studios">{getResourceListStr(animeData!.studios, "Studio")}</h6>
 
                     {/* displaying synopsis */}
                     {/* 
