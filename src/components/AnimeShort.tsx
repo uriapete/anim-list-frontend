@@ -6,11 +6,6 @@ import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 
-// // checks if supplied data is Anime
-// function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
-//     return "length" in data;
-// }
-
 // checks if supplied data is JikanResponse<Anime>
 function isJkResp(data: Anime | JikanResponse<Anime>): data is JikanResponse<Anime> {
     return "data" in data;
@@ -51,8 +46,8 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
         let breakLength: number = 250;
 
         // if desktop, bigger breaklength
-        if (window.innerWidth >= 500) {
-            breakLength = 700
+        if (window.innerWidth >= 800) {
+            breakLength = 600;
         }
 
         // if synopsis length exceeds breaklength...
@@ -102,7 +97,6 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
         }
     }
 
-    // console.log(animeData.titles[0]);
     // getting japanese title
     const jpTitle: string = getLangTitle(animeData.titles, "Japanese");
     // animes should always have jp title available, i think
@@ -121,10 +115,12 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
                 <div className="anime-text short-item">
 
                     {/* displaying title */}
-                    {/* first default title */}
-                    <h3 className="anime-title anime-title-default">{animeData.titles[0].title}</h3>
-                    {/* then display the jp title */}
-                    <h6>{jpTitle}</h6>
+                    {/* first jp title */}
+                    <h3 className="anime-title anime-title-jp">{jpTitle}</h3>
+                    {/* then display the default and en titles */}
+                    <h5 className="anime-title anime-title-default">{animeData.titles[0].title}</h5>
+                    {animeData.titles[0].title === getLangTitle(animeData.titles, "English") ? "" : 
+                    <h6 className="anime-title anime-title-en">{getLangTitle(animeData.titles, "English")}</h6>}
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
