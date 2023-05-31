@@ -17,6 +17,10 @@
     margin: auto;
 }
 
+.search-results-pages{
+    margin-top: 1vh;
+}
+
 @media screen and (min-width:800px) {
     .search-container {
         width: 65%;
