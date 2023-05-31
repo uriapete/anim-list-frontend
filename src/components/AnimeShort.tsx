@@ -6,10 +6,10 @@ import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 
-// checks if supplied data is Anime
-function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
-    return "length" in data;
-}
+// // checks if supplied data is Anime
+// function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
+//     return "length" in data;
+// }
 
 // checks if supplied data is JikanResponse<Anime>
 function isJkResp(data: Anime | JikanResponse<Anime>): data is JikanResponse<Anime> {
@@ -20,23 +20,25 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
 
     // getting vars out of props
     const { anime, additionalClassNames, idx } = props;
-    
+
     // processing additional class names
     let additionalClasses: string = "";
     if (additionalClassNames) {
         additionalClasses = " " + additionalClassNames;
     }
-    
-    if(anime===null){
-        return(
-            <article className={"anime-short"+additionalClasses}>
+
+    // if anime is null, it's still loading
+    if (anime === null) {
+        return (
+            <article className={"anime-short" + additionalClasses}>
                 <h1>Loading...</h1>
             </article>
         )
     }
 
-    let animeData: Anime=isJkResp(anime)?anime.data:anime;
-    
+    // process anime into Anime data, if it's a JikanResponse, get the data, if not then it's alread ready for use
+    let animeData: Anime = isJkResp(anime) ? anime.data : anime;
+
     // part for handling synopsis
 
     // var for synopsis
