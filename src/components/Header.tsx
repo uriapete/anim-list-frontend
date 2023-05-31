@@ -9,7 +9,7 @@ export default function Header():ReactElement {
             <Link to={"/"}>
                 <h1>MoeList!</h1>
             </Link>
-            <h6>Note: Still under construction!</h6>
+            <h6>A place to look at random anime!</h6>
             <Nav as={"nav"} variant="pills">
                 <Nav.Item>
                     <Nav.Link as={Link} to="/" >Home</Nav.Link>
