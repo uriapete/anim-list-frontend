@@ -72,7 +72,7 @@ export default function AnimeShow(): ReactElement {
         return (
             <div className="anime-show AnimeShow" id="anime-show">
                 {anime ?
-                    <>
+                    <div className="anime-show-info" id="show-info">
                         <h1 className="jp-title">{jpTitle}</h1>
                         <h3 className="default-title">{defaultTitle}</h3>
                         <h6 className="en-title-translated">{enTitle}</h6>
@@ -104,7 +104,7 @@ export default function AnimeShow(): ReactElement {
                                     </> : null}
                             </div>
                         </div>
-                    </>
+                    </div>
                     :
                     <h1 id="load-show">Loading...</h1>
                 }
@@ -114,7 +114,7 @@ export default function AnimeShow(): ReactElement {
         return (
             <div className="anime-show AnimeShow" id="anime-show">
                 {anime ?
-                    <>
+                    <div className="anime-show-info" id="show-info">
                         <Row>
                             <Col as={"div"} className="img-col" xs="4">
                                 <img src={imgUrl} alt={imgAlt} style={{ maxWidth: "100%" }} />
@@ -150,7 +150,8 @@ export default function AnimeShow(): ReactElement {
                                 </div>
                             </Col>
                         </Row>
-                    </> :
+                    </div>
+                    :
                     <h1 id="load-show">
                         Loading...
                     </h1>}
