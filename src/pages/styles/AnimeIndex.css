@@ -1,37 +1,24 @@
-.search-container{
+.search-container {
     width: 90%;
 }
 
-.search-form-group{
+.search-form-group {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
 }
 
-.search-form-group > *{
+.search-form-group>* {
     margin: auto 5px;
     padding: 0;
 }
 
-.form-label{
+.form-label {
     margin: auto;
 }
 
-/* .search-form-group *{
-    height: 38px;
-    line-height: 38px;
-} */
-
-.first-search-result{
-    margin: 3.5vh auto 5vh auto;
-}
-
-.last-search-result{
-    margin: 5vh auto auto auto;
-}
-
 @media screen and (min-width:800px) {
-    .search-container{
+    .search-container {
         width: 65%;
     }
 }

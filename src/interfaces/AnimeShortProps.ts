@@ -1,7 +1,7 @@
-import { Anime } from "@tutkli/jikan-ts";
+import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 
-export default interface AnimeShortProps{
-    anime:Anime;
-    idx?:number;
-    additionalClassNames?:string;
+export default interface AnimeShortProps {
+    anime: JikanResponse<Anime>|Anime|null;
+    idx?: number;
+    additionalClassNames?: string;
 }

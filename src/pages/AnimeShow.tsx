@@ -31,7 +31,7 @@ export default function AnimeShow(): ReactElement {
         }
     }, [malId])
 
-    // console.log(anime)
+    console.log(anime)
 
     // strings for displaying information
     let defaultTitle: string = "";
@@ -91,10 +91,12 @@ export default function AnimeShow(): ReactElement {
                         <div className="info-col">
                             <p className="synopsis">{synop}</p>
                             <div className="links-col">
-                                <ul className="streaming-links">
-                                    <h6>Streaming on:</h6>
-                                    <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
-                                </ul>
+                                {anime.streaming.length ? <>
+                                    <ul className="streaming-links">
+                                        <h6>Streaming on:</h6>
+                                        <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
+                                    </ul>
+                                </> : ""}
                                 {anime.external ?
                                     <>
                                         <ul className="other-ext">
@@ -126,10 +128,12 @@ export default function AnimeShow(): ReactElement {
                                 <h6 className="aud-rating">{ratingStr}</h6>
                                 <h6 className="year-season-type">{yearSeasonTypeStr}</h6>
                                 <div className="links-col">
-                                    <ul className="streaming-links">
-                                        <h6>Streaming on:</h6>
-                                        <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
-                                    </ul>
+                                    {anime.streaming.length ? <>
+                                        <ul className="streaming-links">
+                                            <h6>Streaming on:</h6>
+                                            <JikanNamedResourceArrToLiElementsWithExtLinks resourceList={anime.streaming} />
+                                        </ul>
+                                    </> : ""}
                                     {anime.external ?
                                         <>
                                             <ul className="other-ext">

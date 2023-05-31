@@ -1,23 +1,29 @@
-ul{
+ul {
     padding: 0;
 }
 
-li{
+li {
     list-style: none;
 }
 
-#load-show{
+.search-results-pages{
+    margin-top: 1vh;
+}
+
+#load-show {
     text-align: center;
 }
 
 @media screen and (min-width:800px) {
-    #anime-show{
+    #anime-show {
         text-align: left;
     }
-    ul li{
+
+    ul li {
         list-style: disc;
     }
-    img{
+
+    img {
         margin: 0 0 2.5vh 0;
     }
 }

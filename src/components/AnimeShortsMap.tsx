@@ -1,71 +1,88 @@
 import { ReactElement } from "react";
-import ListSearchResultsProps from "../interfaces/ListSearchResultsProps";
+import AnimeShortsMapProps from "../interfaces/AnimeShortsMapProps";
 import AnimeShort from "./AnimeShort";
-import { Anime,JikanResponse } from "@tutkli/jikan-ts";
+import { Anime, JikanResponse } from "@tutkli/jikan-ts";
+import "./styles/AnimeShortsMap.css"
 
-function isAnimeArr(data:Anime[]|JikanResponse<Anime[]>):data is Anime[] {
+// one of our props could either be Anime[] or JikanResponse<Anime[]>
+// this is bc the supplied data used to just be Anime[], but changed to JikanResponse<Anime[]>
+// just for support purposes and nothing breaks but will probs remove the type union later
+
+// checks if supplied data is Anime[]
+function isAnimeArr(data: Anime[] | JikanResponse<Anime[]>): data is Anime[] {
     return "length" in data;
 }
 
-function isJkResp(data:Anime[]|JikanResponse<Anime[]>):data is JikanResponse<Anime[]> {
+// checks if supplied data is JikanResponse<Anime[]>
+function isJkResp(data: Anime[] | JikanResponse<Anime[]>): data is JikanResponse<Anime[]> {
     return "pagination" in data;
 }
 
-export default function ListSearchResults(props:ListSearchResultsProps):ReactElement{
+export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement {
     // destructuring object for easy access
-    const{searchData}=props;
+    const { animeList } = props;
 
-    if (searchData === null) {
+    if (animeList === null) {
+        // if animeList is null, it's still loading
         return (
             <h1>Loading...</h1>
         )
-    } else if (isAnimeArr(searchData)){
-        if (searchData.length <= 0) {
+    } else if (isAnimeArr(animeList)) {
+        // if supplied data is Anime[]... (not null)
+
+        // if length of data is 0, there were no results.
+        if (animeList.length <= 0) {
             return (
                 <h1>No results.</h1>
             )
         } else {
+            // else, we map thru the data
             return (
-                <>
-                    {searchData.map((anime, idx) => {
+                <div className="anime-list">
+                    {animeList.map((anime, idx) => {
                         // adding class to first and last results
                         // these classes have slightly diff. margins
-    
+
                         // var for holding the string that holds the class
                         let positionClass: string = "";
-    
+
                         // switch statement: check the idx of the result
                         switch (idx) {
                             // case for first result
                             case 0:
-                                positionClass += " first-search-result"
+                                positionClass += " first-short"
                                 break;
-    
+
                             // case for last result
-                            case searchData!.length - 1:
-                                positionClass += " last-search-result"
+                            case animeList!.length - 1:
+                                positionClass += " last-short"
                                 break;
-    
+
                             // else, do nothing
                             default:
                                 break;
                         }
+                        // each anime will desplay their own short form summary
                         return (
                             <AnimeShort anime={anime} additionalClassNames={positionClass} key={idx} idx={idx} />
                         )
                     })}
-                </>
+                </div>
             )
         }
-    } else if(isJkResp(searchData)){
-        if(searchData.data.length<=0){
+    } else if (isJkResp(animeList)) {
+        // if supplied data is a JikanResponse<Anime[]>...(not null)
+
+        // if the length of the data is 0, no results.
+        if (animeList.data.length <= 0) {
             return (
                 <h1>No results.</h1>
             )
-        }else{
-            return(
-                <>
-                    {searchData.data.map((anime, idx,data) => {
+        } else {
+            // else, map thru the data
+            return (
+                <div className="anime-list">
+                    {animeList.data.map((anime, idx, data) => {
                         // adding class to first and last results
                         // these classes have slightly diff. margins
 
@@ -88,15 +105,17 @@ export default function ListSearchResults(props:ListSearchResultsProps):ReactEle
                             default:
                                 break;
                         }
+                        // each anime will desplay their own short form summary
                         return (
                             <AnimeShort anime={anime} additionalClassNames={positionClass} key={idx} idx={idx} />
                         )
                     })}
-                </>
+                </div>
             )
         }
-    }else{
-        return(
+    } else {
+        // else, no idea what happened
+        return (
             <h1>Unknown Error has occurred!</h1>
         )
     }
