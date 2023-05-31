@@ -8,6 +8,8 @@ import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
 import useAnimeSearchData from "../functions/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
+import DisplayTopAnime from "../components/DisplayTopAnime";
+import { TopAnimeFilter } from "@tutkli/jikan-ts";
 
 // home/index page
 export default function AnimeIndex(): ReactElement {
@@ -44,7 +46,12 @@ export default function AnimeIndex(): ReactElement {
     // now here's the actual tsx element
     return (
         <div className="AnimeIndex anime-index" id="anime-index">
-            {search ? null : <h1>Welcome to MoeList!</h1>}
+            {search ? null : 
+            <div className="welcome">
+                <h1 className="welcome-message">Welcome to MoeList!</h1>
+                <h3>You can search for anime:</h3>
+            </div>
+            }
             {/* form for search: contains an input "search" and submit button */}
             {/* using rows, cols, and container from Bootstrap-React for styling */}
             <Container className="search-container" fluid>
@@ -68,7 +75,11 @@ export default function AnimeIndex(): ReactElement {
             {/* if we have a search, render the results */}
             {search !== null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages} /> :
                 <div className="home-page">
-
+                    <h3>Or you can look at stuff we've found:</h3>
+                    <div className="top-airing">
+                        <h4>Here's the top anime currently airing, according to MAL:</h4>
+                        <DisplayTopAnime filter={TopAnimeFilter.airing} limit={3} />
+                    </div>
                 </div>}
             {/* // if there was no search (aka on default home page), render case for no search
             // i plan for having recommended and random section here, that's for later */}
