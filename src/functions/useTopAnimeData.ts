@@ -8,7 +8,6 @@ export default function useTopAnimeData(filter: TopAnimeFilter, limit: number = 
     // init data states
     const [topData, setTopData] = useState<JikanResponse<Anime[]> | null>(null);
     const [numPages, setNumPages] = useState<number>(0)
-    // let numPages:number=0;
 
     useEffect(() => {
         async function getTopAnimeData() {
@@ -17,7 +16,7 @@ export default function useTopAnimeData(filter: TopAnimeFilter, limit: number = 
 
             setTopData(fetchedTopData);
 
-            // numPages=getNumPages(fetchedTopData);
+            // calculate numpages
             setNumPages(getNumPages(fetchedTopData))
         }
         try {
