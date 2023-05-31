@@ -6,11 +6,6 @@ import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 
-// // checks if supplied data is Anime
-// function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
-//     return "length" in data;
-// }
-
 // checks if supplied data is JikanResponse<Anime>
 function isJkResp(data: Anime | JikanResponse<Anime>): data is JikanResponse<Anime> {
     return "data" in data;
@@ -102,7 +97,6 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
         }
     }
 
-    // console.log(animeData.titles[0]);
     // getting japanese title
     const jpTitle: string = getLangTitle(animeData.titles, "Japanese");
     // animes should always have jp title available, i think
