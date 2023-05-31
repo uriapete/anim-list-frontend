@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import useRandomAnime from "../functions/useRandomAnime";
+import useRandomAnime from "../hooks/useRandomAnime";
 import AnimeShort from "./AnimeShort";
 
 // component for displaying a short for a random anime
