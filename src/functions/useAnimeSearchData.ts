@@ -21,7 +21,8 @@ export default function useAnimeSearchData(q: string, page?: number) {
             // using our anime client, fetch a search with our search term
             const searchData: JikanResponse<Anime[]> = await jikanClient.anime.getAnimeSearch({
                 q,
-                page
+                page,
+                limit:10,
             })
 
             // make search data available to this component
