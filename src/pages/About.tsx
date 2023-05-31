@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import "./styles/About.css"
 
 export default function About():ReactElement{
     return(
