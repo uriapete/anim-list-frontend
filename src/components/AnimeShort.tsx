@@ -46,8 +46,8 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
         let breakLength: number = 250;
 
         // if desktop, bigger breaklength
-        if (window.innerWidth >= 500) {
-            breakLength = 700
+        if (window.innerWidth >= 800) {
+            breakLength = 600;
         }
 
         // if synopsis length exceeds breaklength...
@@ -115,10 +115,12 @@ export default function AnimeShort(props: AnimeShortProps): ReactElement {
                 <div className="anime-text short-item">
 
                     {/* displaying title */}
-                    {/* first default title */}
-                    <h3 className="anime-title anime-title-default">{animeData.titles[0].title}</h3>
-                    {/* then display the jp title */}
-                    <h6>{jpTitle}</h6>
+                    {/* first jp title */}
+                    <h3 className="anime-title anime-title-jp">{jpTitle}</h3>
+                    {/* then display the default and en titles */}
+                    <h5 className="anime-title anime-title-default">{animeData.titles[0].title}</h5>
+                    {animeData.titles[0].title === getLangTitle(animeData.titles, "English") ? "" : 
+                    <h6 className="anime-title anime-title-en">{getLangTitle(animeData.titles, "English")}</h6>}
 
                     {/* displaying studios */}
                     {/* begin looping thru studios */}
