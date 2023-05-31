@@ -6,10 +6,10 @@ import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 
-// checks if supplied data is Anime
-function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
-    return "length" in data;
-}
+// // checks if supplied data is Anime
+// function isAnime(data: Anime | JikanResponse<Anime>): data is Anime {
+//     return "length" in data;
+// }
 
 // checks if supplied data is JikanResponse<Anime>
 function isJkResp(data: Anime | JikanResponse<Anime>): data is JikanResponse<Anime> {
