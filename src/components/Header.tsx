@@ -15,6 +15,9 @@ export default function Header():ReactElement {
                     <Nav.Link as={Link} to="/" >Home</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
+                    <Nav.Link as={Link} to="/about" >About</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
                     <Nav.Link as={Link} to="/anime/random" >Random</Nav.Link>
                 </Nav.Item>
             </Nav>
