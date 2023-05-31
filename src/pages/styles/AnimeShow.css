@@ -1,13 +1,13 @@
+.anime-show-info{
+  color: rgb(154, 78, 161);
+}
+
 ul {
     padding: 0;
 }
 
 li {
     list-style: none;
-}
-
-.search-results-pages{
-    margin-top: 1vh;
 }
 
 #load-show {

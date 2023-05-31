@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button"
 import "./styles/AnimeIndex.css"
 import { NavigateFunction, useLocation, useNavigate } from "react-router";
-import useAnimeSearchData from "../functions/useAnimeSearchData";
+import useAnimeSearchData from "../hooks/useAnimeSearchData";
 import SearchResultPages from "../components/SearchResultPages";
 import DisplayTopAnime from "../components/DisplayTopAnime";
 import { TopAnimeFilter } from "@tutkli/jikan-ts";

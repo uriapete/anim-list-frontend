@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { NavigateFunction, useNavigate } from "react-router";
-import useRandomAnime from "../functions/useRandomAnime";
+import useRandomAnime from "../hooks/useRandomAnime";
 
 export default function AnimeRandom(): ReactElement {
     // navigation function - for redirects

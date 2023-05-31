@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import DisplayTopAnimeProps from "../interfaces/DisplayTopAnimeProps";
-import useTopAnimeData from "../functions/useTopAnimeData";
+import useTopAnimeData from "../hooks/useTopAnimeData";
 import AnimeShortsMap from "./AnimeShortsMap";
 
 // generic component for getting top anime - can be used to get most popular anime, top upcoming, top currently airing, etc
