@@ -77,11 +77,6 @@ export default function AnimeIndex(): ReactElement {
             {search !== null ? <SearchResultPages searchData={searchDataComplete} numPages={numPages} /> :
                 <div className="home-page">
                     <h3>Or you can look at stuff we've found:</h3>
-                    <div className="home-feat rand-anime">
-                        <h4>Here's some random anime:</h4>
-                        <RandomAnimeShort />
-                        <RandomAnimeShort />
-                    </div>
                     <div className="home-feat top-airing">
                         <h4>Here's some of the top anime currently airing, according to MAL:</h4>
                         <DisplayTopAnime filter={TopAnimeFilter.airing} limit={3} />
@@ -93,6 +88,11 @@ export default function AnimeIndex(): ReactElement {
                     <div className="home-feat top-popularity">
                         <h4>Here's some of the most popular anime, according to MAL:</h4>
                         <DisplayTopAnime filter={TopAnimeFilter.bypopularity} limit={3} />
+                    </div>
+                    <div className="home-feat rand-anime">
+                        <h4>Feeling really bored? Here's some random anime:</h4>
+                        <RandomAnimeShort />
+                        <RandomAnimeShort />
                     </div>
                 </div>}
             {/* // if there was no search (aka on default home page), render case for no search
