@@ -31,8 +31,6 @@ export default function AnimeShow(): ReactElement {
         }
     }, [malId])
 
-    console.log(anime)
-
     // strings for displaying information
     let defaultTitle: string = "";
     let jpTitle: string = "";
