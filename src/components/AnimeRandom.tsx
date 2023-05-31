@@ -11,22 +11,6 @@ export default function AnimeRandom(): ReactElement {
     // navigation function - for redirects
     const navigate: NavigateFunction = useNavigate();
 
-    // // useEffect - executes as soon as page loads
-    // useEffect(() => {
-    //     // function that fetches random anime
-    //     async function fetchRandAnime() {
-    //         try {
-    //             const response = await fetch(url);
-    //             const respData: JikanResponse<Anime> = await response.json();
-    //             const animeData: Anime = respData.data;
-    //             navigate(`/anime/${animeData.mal_id}`)
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //     fetchRandAnime();
-    // }, [navigate])
-
     const randomAnime = useRandomAnime();
 
     if (randomAnime!==null){
