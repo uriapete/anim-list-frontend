@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Anime, JikanResponse } from "@tutkli/jikan-ts";
 import jikanClient from "../clients/jikanClient";
-import getNumPages from "./getNumPages";
+import getNumPages from "../functions/getNumPages";
 
 // hook for searching anime and using data of results
 export default function useAnimeSearchData(q: string, page?: number) {

@@ -1,7 +1,7 @@
 import { Anime, JikanResponse, TopAnimeFilter } from "@tutkli/jikan-ts";
 import jikanClient from "../clients/jikanClient";
 import { useEffect, useState } from "react";
-import getNumPages from "./getNumPages";
+import getNumPages from "../functions/getNumPages";
 
 // hook for getting top anime
 export default function useTopAnimeData(filter: TopAnimeFilter, limit: number = 5, page: number = 1) {

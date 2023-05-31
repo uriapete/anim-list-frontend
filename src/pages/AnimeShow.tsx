@@ -8,7 +8,7 @@ import JikanNamedResourceArrToLiElementsWithExtLinks from "../components/JikanNa
 import getResourceListStr from "../functions/getResourceListStr";
 import getLangTitle from "../functions/getLangTitle";
 import { Row } from "react-bootstrap";
-import useDesktopWidthQuery from "../functions/useDesktopWidthQuery";
+import useDesktopWidthQuery from "../hooks/useDesktopWidthQuery";
 import jikanClient from "../clients/jikanClient";
 
 export default function AnimeShow(): ReactElement {
