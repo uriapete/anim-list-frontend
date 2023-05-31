@@ -77,8 +77,16 @@ export default function AnimeIndex(): ReactElement {
                 <div className="home-page">
                     <h3>Or you can look at stuff we've found:</h3>
                     <div className="top-airing">
-                        <h4>Here's the top anime currently airing, according to MAL:</h4>
+                        <h4>Here's some of the top anime currently airing, according to MAL:</h4>
                         <DisplayTopAnime filter={TopAnimeFilter.airing} limit={3} />
+                    </div>
+                    <div className="top-upcoming">
+                        <h4>Here's some of the top upcoming anime, according to MAL:</h4>
+                        <DisplayTopAnime filter={TopAnimeFilter.upcoming} limit={3} />
+                    </div>
+                    <div className="top-popularity">
+                        <h4>Here's some of the most popular anime, according to MAL:</h4>
+                        <DisplayTopAnime filter={TopAnimeFilter.bypopularity} limit={3} />
                     </div>
                 </div>}
             {/* // if there was no search (aka on default home page), render case for no search
