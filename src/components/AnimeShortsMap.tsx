@@ -20,18 +20,18 @@ function isJkResp(data: Anime[] | JikanResponse<Anime[]>): data is JikanResponse
 
 export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement {
     // destructuring object for easy access
-    const { searchData } = props;
+    const { animeList } = props;
 
-    if (searchData === null) {
-        // if searchData is null, it's still loading
+    if (animeList === null) {
+        // if animeList is null, it's still loading
         return (
             <h1>Loading...</h1>
         )
-    } else if (isAnimeArr(searchData)) {
+    } else if (isAnimeArr(animeList)) {
         // if supplied data is Anime[]... (not null)
 
         // if length of data is 0, there were no results.
-        if (searchData.length <= 0) {
+        if (animeList.length <= 0) {
             return (
                 <h1>No results.</h1>
             )
@@ -39,7 +39,7 @@ export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement
             // else, we map thru the data
             return (
                 <div className="anime-list">
-                    {searchData.map((anime, idx) => {
+                    {animeList.map((anime, idx) => {
                         // adding class to first and last results
                         // these classes have slightly diff. margins
 
@@ -54,7 +54,7 @@ export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement
                                 break;
 
                             // case for last result
-                            case searchData!.length - 1:
+                            case animeList!.length - 1:
                                 positionClass += " last-short"
                                 break;
 
@@ -70,11 +70,11 @@ export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement
                 </div>
             )
         }
-    } else if (isJkResp(searchData)) {
+    } else if (isJkResp(animeList)) {
         // if supplied data is a JikanResponse<Anime[]>...(not null)
 
         // if the length of the data is 0, no results.
-        if (searchData.data.length <= 0) {
+        if (animeList.data.length <= 0) {
             return (
                 <h1>No results.</h1>
             )
@@ -82,7 +82,7 @@ export default function AnimeShortsMap(props: AnimeShortsMapProps): ReactElement
             // else, map thru the data
             return (
                 <div className="anime-list">
-                    {searchData.data.map((anime, idx, data) => {
+                    {animeList.data.map((anime, idx, data) => {
                         // adding class to first and last results
                         // these classes have slightly diff. margins
 

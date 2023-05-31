@@ -66,7 +66,7 @@ export default function SearchResultPages(props: SearchResultPagesProps): ReactE
     return (
         <div className="search-results-pages">
             <div className="page-buttons page-buttons-top">{pageBtns}</div>
-            <AnimeShortsMap searchData={searchData.data} />
+            <AnimeShortsMap animeList={searchData.data} />
             <div className="page-buttons page-buttons-bottom">{pageBtns}</div>
         </div>
     )
