@@ -1,4 +1,4 @@
-# MoeList! (Name not final)
+# MoeList!
 A React app showing off some anime.
 
 ### Why?
