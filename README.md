@@ -26,6 +26,16 @@ As a user, I want to be able to...
 ![Image of a simple wireframe-work of how the MoeList index page would look - a blue background with a white active main section, with purple accents. A selection of multiple shows under the searchbar is shown.](./md-assets/wireframes/home-search.v001.png)
 ![Image of a simple wireframe-work of how a MoeList show page would look - a blue background with a white active main section, with purple accents. Information about a particular show is shown.](./md-assets/wireframes/article.v002.png)
 
+## Screenshots
+### Site for mobile
+![An image of the MoeList site's mobile homepage, featuring "Attack on Titan: The Final Season - Final Chapters" as a featured front page card](md-assets/screenshots/mobile-home.png)
+![An image of the MoeList site's mobile search results page, featuring "KonoSuba: God's Blessing on This Wonderful World!" as one of the search results](md-assets/screenshots/mobile-search.png)
+![An image of the MoeList site's mobile anime show page, featuring "Oshi no Ko"](md-assets/screenshots/mobile-show.png)
+### Site for desktop
+![An image of the MoeList site's desktop homepage, featuring "Attack on Titan: The Final Season - Final Chapters" as a featured front page card](md-assets/screenshots/desktop-home.png)
+![An image of the MoeList site's desktop search results page, featuring "KonoSuba: God's Blessing on This Wonderful World!" as one of the search results](md-assets/screenshots/desktop-search.png)
+![An image of the MoeList site's desktop anime show page, featuring "Oshi no Ko"](md-assets/screenshots/desktop-show.png)
+
 ## Technologies used
 - TypeScript - language
 - React - front end
