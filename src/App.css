@@ -14,7 +14,7 @@ main{
   border-radius: 5px;
   }
 
-@media screen and (min-width:500px) {
+@media screen and (min-width:800px) {
   main{
     padding: 1.25vw;
     width: 70vw;
