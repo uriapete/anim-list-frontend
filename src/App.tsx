@@ -16,7 +16,7 @@ function App() {
       <main>
         <Routes>
           <Route path='' element={<AnimeIndex />} />
-          <Route path='about' element={About()} />
+          <Route path='about' element={<About />} />
           <Route path='anime'>
             <Route path='random' element={<AnimeRandom />} />
             <Route path=':malId' element={<AnimeShow />} />
